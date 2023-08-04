@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/02 19:57:53 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/03 23:28:41 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/04 15:08:07 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,33 @@
 
 void	Contact::printMembers(void)
 {
-	std::cout << "First Name: " << this->_firstName << std::endl;
-	std::cout << "Last Name: " << this->_lastName << std::endl;
-	std::cout << "Nickname: " << this->_nickname << std::endl;
-	std::cout << "Phone Number: " << this->_phoneNumber << std::endl;
-	std::cout << "Darkest Secret: " << this->_darkestSecret << std::endl;
+	std::cout << "First Name: " << _firstName << std::endl;
+	std::cout << "Last Name: " << _lastName << std::endl;
+	std::cout << "Nickname: " << _nickname << std::endl;
+	std::cout << "Phone Number: " << _phoneNumber << std::endl;
+	std::cout << "Darkest Secret: " << _darkestSecret << std::endl;
 }
 
-bool	Contact::areFieldsCorrect(void)
+bool	Contact::areFieldsFilled(void)
 {
-	if ((this->_firstName.length() == 0)
-		|| (this->_lastName.length() == 0)
-		|| (this->_nickname.length() == 0)
-		|| (this->_phoneNumber.length() == 0)
-		|| (this->_darkestSecret.length() == 0))
+	if ((_firstName.length() == 0)
+		|| (_lastName.length() == 0)
+		|| (_nickname.length() == 0)
+		|| (_phoneNumber.length() == 0)
+		|| (_darkestSecret.length() == 0))
 	{
 		return (false);
 	}
 	return (true);
+}
+
+void	Contact::resetStrings(void)
+{
+	_firstName.erase();
+	_lastName.erase();
+	_nickname.erase();
+	_phoneNumber.erase();
+	_darkestSecret.erase();
 }
 
 // #############################################################################
@@ -73,27 +82,27 @@ Contact::~Contact(void)
 
 void	Contact::setFirstName(std::string &newFirstName)
 {
-	this->_firstName = newFirstName;
+	_firstName = newFirstName;
 }
 
 void	Contact::setLastName(std::string &newLastName)
 {
-	this->_lastName = newLastName;
+	_lastName = newLastName;
 }
 
 void	Contact::setNickname(std::string &newNickname)
 {
-	this->_nickname = newNickname;
+	_nickname = newNickname;
 }
 
 void	Contact::setPhoneNumber(std::string &newPhoneNumber)
 {
-	this->_phoneNumber = newPhoneNumber;
+	_phoneNumber = newPhoneNumber;
 }
 
 void	Contact::setDarkestSecret(std::string &newDarkestSecret)
 {
-	this->_darkestSecret = newDarkestSecret;
+	_darkestSecret = newDarkestSecret;
 }
 
 // #############################################################################
@@ -102,25 +111,25 @@ void	Contact::setDarkestSecret(std::string &newDarkestSecret)
 
 std::string		&Contact::getFirstName(void)
 {
-	return (this->_firstName);
+	return (_firstName);
 }
 
 std::string		&Contact::getLastName(void)
 {
-	return (this->_lastName);
+	return (_lastName);
 }
 
 std::string		&Contact::getNickname(void)
 {
-	return (this->_nickname);
+	return (_nickname);
 }
 
 std::string		&Contact::getPhoneNumber(void)
 {
-	return (this->_phoneNumber);
+	return (_phoneNumber);
 }
 
 std::string		&Contact::getDarkestSecret(void)
 {
-	return (this->_darkestSecret);
+	return (_darkestSecret);
 }

@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/02 21:27:13 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/03 22:57:24 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/04 15:11:41 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,24 @@ class Contact
 		~Contact(void);
 
 
-
+		// Setters
 		void			setFirstName(std::string &newFirstName);
 		void			setLastName(std::string &newLastName);
 		void			setNickname(std::string &newNickname);
 		void			setPhoneNumber(std::string &newPhoneNumber);
 		void			setDarkestSecret(std::string &newFirstName);
 
+		// Getters
 		std::string		&getFirstName(void);
 		std::string		&getLastName(void);
 		std::string		&getNickname(void);
 		std::string		&getPhoneNumber(void);
 		std::string		&getDarkestSecret(void);
 
+		// Methods
 		void			printMembers(void);
-		bool			areFieldsCorrect(void);
+		bool			areFieldsFilled(void);
+		void			resetStrings(void);
 } ;
 
 #endif

@@ -6,61 +6,82 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/03 01:00:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/03 23:39:17 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/04 15:06:49 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iomanip>
+// #include <cctype>
 
-void	PhoneBook::add(void)
+#define HORIZONTAL_EDGE	"---------------------------------------------\n"
+#define EMPTY_CONTACT	       "           |            |            |\n"
+#define TABLE_INFO		"| ID |    NAME    | LAST  NAME |  NICKNAME  |\n"
+
+bool	isValidContact(Contact &contact)
 {
-	std::string		tmp;
-	Contact			&currentContact = this->_contacts[_index];
+	const std::string phoneNumber = contact.getPhoneNumber();
 
-	std::cout << "First Name: ";
-	std::getline(std::cin, tmp);
-	currentContact.setFirstName(tmp);
+	for (int i = 0; i < (int) phoneNumber.length(); i++)
+	{
+		if (std::isdigit((int) phoneNumber[i]) == false)
+		{
+			std::cout << "Error creating contact!" << "\n";
+			std::cout << "Please enter a valid phone number" << "\n";
+			return (false);
+		}
+	}
 
-	std::cout << "Last Name: ";
-	std::getline(std::cin, tmp);
-	currentContact.setLastName(tmp);
-
-	std::cout << "Nickname: ";
-	std::getline(std::cin, tmp);
-	currentContact.setNickname(tmp);
-
-	std::cout << "Phone number: ";
-	std::getline(std::cin, tmp);
-	currentContact.setPhoneNumber(tmp);
-
-	std::cout << "Darkest Secret: ";
-	std::getline(std::cin, tmp);
-	currentContact.setDarkestSecret(tmp);
-
-	if (currentContact.areFieldsCorrect() == false)
+	if (contact.areFieldsFilled() == false)
 	{
 		std::cout << "Error creating contact!" << "\n";
 		std::cout << "Fields cannot be empty" << "\n";
-		currentContact.~Contact();
+		return (false);
 	}
-
-	this->_index++;
-	if (this->_index < 8)
-		this->_index = 0;
+	return (true);
 }
 
-static void		printEdges(void)
+void	PhoneBook::add(void)
 {
-	std::cout.width(45);
-	std::cout.fill('-');
-	std::cout << std::right << "\n";
-	std::cout.fill(' ');
+	std::string		input;
+	Contact			&currentContact = this->_contacts[this->_index];
+
+	std::cout << "First Name: ";
+	std::getline(std::cin, input);
+	currentContact.setFirstName(input);
+
+	std::cout << "Last Name: ";
+	std::getline(std::cin, input);
+	currentContact.setLastName(input);
+
+	std::cout << "Nickname: ";
+	std::getline(std::cin, input);
+	currentContact.setNickname(input);
+
+	std::cout << "Phone number: ";
+	std::getline(std::cin, input);
+	currentContact.setPhoneNumber(input);
+
+	std::cout << "Darkest Secret: ";
+	std::getline(std::cin, input);
+	currentContact.setDarkestSecret(input);
+
+	std::cout << "\n";
+	if (isValidContact(currentContact) == false)
+	{
+		currentContact.resetStrings();
+		return ;
+	}
+	else
+		std::cout << "Contact " << this->_index + 1 << " succesfully created" << "\n";
+
+	this->_index++;
+	if (this->_index > 7)
+		this->_index = 0;
 }
 
 static void		printField(std::string &field, std::string end)
 {
-	
 	if (field.length() > 10)
 		std::cout << field.substr(0, 9) << ".";
 	else
@@ -74,17 +95,22 @@ static void		printField(std::string &field, std::string end)
 
 void	PhoneBook::displayContacts(void)
 {
-	printEdges();
+	std::cout << HORIZONTAL_EDGE;
+	std::cout << TABLE_INFO;
+	std::cout << HORIZONTAL_EDGE;
 	for (int i = 0; i < 8; i++)
 	{
-		if (this->_contacts[i].areFieldsCorrect() == false)
+		std::cout << "| " << i + 1 << "  | ";
+		if (this->_contacts[i].areFieldsFilled() == false)
+		{
+			std::cout << EMPTY_CONTACT;
 			continue ;
-		std::cout << "| " << i + 1 << " | ";
+		}
 		printField(this->_contacts[i].getFirstName(), " | ");
 		printField(this->_contacts[i].getLastName(), " | ");
 		printField(this->_contacts[i].getNickname(), " |\n");
 	}
-	printEdges();
+	std::cout << HORIZONTAL_EDGE;
 }
 
 void	PhoneBook::search(int index)
@@ -92,6 +118,11 @@ void	PhoneBook::search(int index)
 	if (!(index >= 1 && index <= 8))
 	{
 		std::cout << index << "is not a valid index!" << "\n";
+		return ;
+	}
+	if (this->_contacts[index - 1].areFieldsFilled() == false)
+	{
+		std::cout << "Contact " << index << " is empty" << "\n";
 		return ;
 	}
 	this->_contacts[index - 1].printMembers();
