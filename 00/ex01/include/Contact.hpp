@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/02 21:27:13 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/04 15:11:41 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/04 16:31:03 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,6 @@ class Contact
 				std::string &darkestSecret);
 		Contact(Contact &copy);
 		~Contact(void);
-
-
-		// Setters
-		void			setFirstName(std::string &newFirstName);
-		void			setLastName(std::string &newLastName);
-		void			setNickname(std::string &newNickname);
-		void			setPhoneNumber(std::string &newPhoneNumber);
-		void			setDarkestSecret(std::string &newFirstName);
 
 		// Getters
 		std::string		&getFirstName(void);

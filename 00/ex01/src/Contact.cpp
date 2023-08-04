@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/02 19:57:53 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/04 15:08:07 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/04 16:31:09 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,35 +75,6 @@ Contact::Contact(Contact &copy)
 
 Contact::~Contact(void)
 { }
-
-// #############################################################################
-// ################################## SETTERS ##################################
-// #############################################################################
-
-void	Contact::setFirstName(std::string &newFirstName)
-{
-	_firstName = newFirstName;
-}
-
-void	Contact::setLastName(std::string &newLastName)
-{
-	_lastName = newLastName;
-}
-
-void	Contact::setNickname(std::string &newNickname)
-{
-	_nickname = newNickname;
-}
-
-void	Contact::setPhoneNumber(std::string &newPhoneNumber)
-{
-	_phoneNumber = newPhoneNumber;
-}
-
-void	Contact::setDarkestSecret(std::string &newDarkestSecret)
-{
-	_darkestSecret = newDarkestSecret;
-}
 
 // #############################################################################
 // ################################## WETTERS ##################################

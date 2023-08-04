@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/02 19:57:53 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/03 23:28:11 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/04 15:58:15 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 	~PhoneBook();
 
 	void	add(void);
-	void	search(int index);
+	void	search(void);
 	void	displayContacts(void);
 };
 

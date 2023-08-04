@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/03 01:00:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/04 15:06:49 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/04 16:05:48 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@
 #define EMPTY_CONTACT	       "           |            |            |\n"
 #define TABLE_INFO		"| ID |    NAME    | LAST  NAME |  NICKNAME  |\n"
 
-bool	isValidContact(Contact &contact)
+static bool		isPhoneValid(std::string &phoneNumber)
 {
-	const std::string phoneNumber = contact.getPhoneNumber();
-
 	for (int i = 0; i < (int) phoneNumber.length(); i++)
 	{
 		if (std::isdigit((int) phoneNumber[i]) == false)
@@ -31,49 +29,52 @@ bool	isValidContact(Contact &contact)
 			return (false);
 		}
 	}
-
-	if (contact.areFieldsFilled() == false)
+	return (true);
+}
+static bool		isFieldEmpty(std::string field)
+{
+	if (field.empty() == true)
 	{
 		std::cout << "Error creating contact!" << "\n";
 		std::cout << "Fields cannot be empty" << "\n";
-		return (false);
+		return (true);
 	}
-	return (true);
+	return (false);
 }
 
 void	PhoneBook::add(void)
 {
-	std::string		input;
-	Contact			&currentContact = this->_contacts[this->_index];
+	std::string		first, last, nick, phone, secret;
 
-	std::cout << "First Name: ";
-	std::getline(std::cin, input);
-	currentContact.setFirstName(input);
+	std::cout << "\n" << "First Name: ";
+	std::getline(std::cin, first);
+	if (isFieldEmpty(first) == true)
+		return ;
 
 	std::cout << "Last Name: ";
-	std::getline(std::cin, input);
-	currentContact.setLastName(input);
+	std::getline(std::cin, last);
+	if (isFieldEmpty(last) == true)
+		return ;
 
 	std::cout << "Nickname: ";
-	std::getline(std::cin, input);
-	currentContact.setNickname(input);
+	std::getline(std::cin, nick);
+	if (isFieldEmpty(nick) == true)
+		return ;
 
 	std::cout << "Phone number: ";
-	std::getline(std::cin, input);
-	currentContact.setPhoneNumber(input);
+	std::getline(std::cin, phone);
+	if (isFieldEmpty(phone) == true || isPhoneValid(phone) == false)
+		return ;
 
 	std::cout << "Darkest Secret: ";
-	std::getline(std::cin, input);
-	currentContact.setDarkestSecret(input);
-
-	std::cout << "\n";
-	if (isValidContact(currentContact) == false)
-	{
-		currentContact.resetStrings();
+	std::getline(std::cin, secret);
+	if (isFieldEmpty(secret) == true)
 		return ;
-	}
-	else
-		std::cout << "Contact " << this->_index + 1 << " succesfully created" << "\n";
+
+	_contacts[_index].~Contact();
+	Contact		newContact(first, last, nick, phone, secret);
+	_contacts[_index] = newContact;
+	std::cout <<  "\n" << "Contact " << this->_index + 1 << " succesfully created" << "\n";
 
 	this->_index++;
 	if (this->_index > 7)
@@ -95,9 +96,7 @@ static void		printField(std::string &field, std::string end)
 
 void	PhoneBook::displayContacts(void)
 {
-	std::cout << HORIZONTAL_EDGE;
-	std::cout << TABLE_INFO;
-	std::cout << HORIZONTAL_EDGE;
+	std::cout << "\n" << HORIZONTAL_EDGE << TABLE_INFO << HORIZONTAL_EDGE;
 	for (int i = 0; i < 8; i++)
 	{
 		std::cout << "| " << i + 1 << "  | ";
@@ -110,11 +109,29 @@ void	PhoneBook::displayContacts(void)
 		printField(this->_contacts[i].getLastName(), " | ");
 		printField(this->_contacts[i].getNickname(), " |\n");
 	}
-	std::cout << HORIZONTAL_EDGE;
+	std::cout << HORIZONTAL_EDGE << "\n";
 }
 
-void	PhoneBook::search(int index)
+void	PhoneBook::search(void)
 {
+	std::string		input;
+	int				index = 0;
+
+	while (std::cin.fail() == false)
+	{
+		std::cout << "Enter an index: ";
+		getline(std::cin, input);
+		if (input.empty() == false)
+		{
+			index = std::stoi(input);
+			break ;
+		}
+	}
+	if (std::cin.fail() == true)
+	{
+		std::cout << "Input closed" << "\n";
+		return ;
+	}
 	if (!(index >= 1 && index <= 8))
 	{
 		std::cout << index << "is not a valid index!" << "\n";
