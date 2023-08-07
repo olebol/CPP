@@ -48,7 +48,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o: src/%.cpp $(HDR)
 	@ mkdir -p obj
-	@ gcc $(CFLAGS) -c $< -o $@ -I $(HDR_DIR)
+	@ $(CC) $(CFLAGS) -c $< -o $@ -I $(HDR_DIR)
 
 open: $(NAME)
 	@ ./$(NAME)

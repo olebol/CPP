@@ -1,8 +1,8 @@
-NAME			:= megaphone
-NICKNAME		:= EX00 - MEGAPHONE
+NAME			:= accounts
+NICKNAME		:= EX02 - THE JOB
 
 # Directories
-# HDR_DIR			:= include
+HDR_DIR			:= include
 LIB_DIR			:= lib
 SRC_DIR			:= src
 OBJ_DIR			:= obj
@@ -16,10 +16,13 @@ ifdef DEBUG
 endif
 
 # Includes
-# HDR_FILES		:=
+HDR_FILES		:=							\
+					Account.hpp				\
 
 # Files
-SRC_FILES		:= megaphone.cpp	\
+SRC_FILES		:=							\
+					tests.cpp				\
+					Account.cpp				\
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ				:= ${addprefix ${OBJ_DIR}/, ${SRC_FILES:.cpp=.o}}
@@ -37,16 +40,22 @@ all: ${NAME}
 
 $(NAME): $(OBJ)
 	@ printf "%b%s%b" "$(YELLOW)$(BOLD)" "Compiling $(NICKNAME)..." "$(RESET)"
-	@ $(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@ $(CC) $(CFLAGS) $(OBJ) -o $(NAME) 
 	@ printf "\t\t%b%s%b\n" "$(GREEN)$(BOLD)" "[OK]" "$(RESET)"
 
 
-$(OBJ_DIR)/%.o: src/%.cpp
+$(OBJ_DIR)/%.o: src/%.cpp $(HDR)
 	@ mkdir -p obj
-	@ $(CC) $(CFLAGS) -c $< -o $@
+	@ $(CC) $(CFLAGS) -c $< -o $@ -I $(HDR_DIR)
 
 open: $(NAME)
 	@ ./$(NAME)
+
+diff: $(NAME)
+	@ ./$(NAME) > "mylog.log"
+	@ diff --horizon-lines=16 "mylog.log" "19920104_091532.log" 
+	@ rm -rf mylog.log
+
 
 log:
 	@ git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%an%C(reset)%C(bold yellow)%d%C(reset) %C(dim white)- %s%C(reset)' --all
