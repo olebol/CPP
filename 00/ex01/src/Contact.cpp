@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/02 19:57:53 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/04 16:31:09 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/08 16:27:03 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	Contact::resetStrings(void)
 // #############################################################################
 
 Contact::Contact(void)
-	:	_firstName(""),
-		_lastName(""),
-		_nickname(""),
-		_phoneNumber(""),
-		_darkestSecret("")
+	:	_firstName(),
+		_lastName(),
+		_nickname(),
+		_phoneNumber(),
+		_darkestSecret()
 { }
 
 Contact::Contact(std::string &newFirstName, std::string &newLastName, \
@@ -66,11 +66,11 @@ Contact::Contact(std::string &newFirstName, std::string &newLastName, \
 { }
 
 Contact::Contact(Contact &copy)
-	:	_firstName(copy.getFirstName()),
-		_lastName(copy.getLastName()),
-		_nickname(copy.getNickname()),
-		_phoneNumber(copy.getPhoneNumber()),
-		_darkestSecret(copy.getDarkestSecret())
+	:	_firstName(copy._firstName),
+		_lastName(copy._lastName),
+		_nickname(copy._nickname),
+		_phoneNumber(copy._phoneNumber),
+		_darkestSecret(copy._darkestSecret)
 { }
 
 Contact::~Contact(void)

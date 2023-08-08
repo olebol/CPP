@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/03 01:00:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/04 16:05:48 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/08 16:33:36 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,4 @@ PhoneBook::PhoneBook(void)
 { }
 
 PhoneBook::~PhoneBook()
-{
-	for (int i = 0; i < 8; i++)
-		this->_contacts[i].~Contact();
-}
+{ }
