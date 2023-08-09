@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   contact.hpp                                        :+:    :+:            */
+/*   Contact.hpp                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/02 21:27:13 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/04 16:31:03 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/09 21:10:21 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,22 @@ class Contact
 	public:
 		// Constructors
 		Contact(void);
-		Contact(std::string &firstName, std::string &lastName, \
-				std::string &nickname, std::string &phoneNumber, \
-				std::string &darkestSecret);
-		Contact(Contact &copy);
+		Contact(const std::string &firstName, const std::string &lastName, \
+				const std::string &nickname, const std::string &phoneNumber, \
+				const std::string &darkestSecret);
+		Contact(const Contact &copy);
 		~Contact(void);
 
 		// Getters
-		std::string		&getFirstName(void);
-		std::string		&getLastName(void);
-		std::string		&getNickname(void);
-		std::string		&getPhoneNumber(void);
-		std::string		&getDarkestSecret(void);
+		const std::string		&getFirstName(void) const;
+		const std::string		&getLastName(void) const;
+		const std::string		&getNickname(void) const;
+		const std::string		&getPhoneNumber(void) const;
+		const std::string		&getDarkestSecret(void) const;
 
 		// Methods
-		void			printMembers(void);
-		bool			areFieldsFilled(void);
-		void			resetStrings(void);
+		void			printMembers(void) const;
+		bool			areFieldsFilled(void) const;
 } ;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/07 22:16:29 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 20:45:37 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/09 21:16:12 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ class Zombie
 		// Getters
 		std::string		getName(void) const;
 
+		// Setters
+		void			setName(std::string &name);
+
 		// Methods
 		void			announce(void) const;
 };
 
-Zombie*		newZombie(std::string name);
-void		randomChump(std::string name);
+Zombie		*ZombieHorde(int N, std::string name);
 
 #endif

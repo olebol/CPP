@@ -5,40 +5,21 @@
 /*                                                     +:+                    */
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/02 21:56:54 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 21:13:10 by opelser       ########   odam.nl         */
+/*   Created: 2023/08/07 22:15:50 by opelser       #+#    #+#                 */
+/*   Updated: 2023/08/09 16:08:45 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
+#include "../include/Zombie.hpp"
 
 int		main(void)
 {
-	PhoneBook		phonebook;
-	std::string		command;
-	
-	phonebook.displayContacts();
-	while (std::cin.fail() == false)
-	{
-		std::cout << "Enter a command: ";
-		getline(std::cin, command);
-		if (command.empty() == true)
-			continue ;
+	int			hordeSize = 5;
+	Zombie		*horde = ZombieHorde(hordeSize, "Brad");
 
-		if (command.compare("ADD") == 0)
-			phonebook.add();
-		else if (command.compare("SEARCH") == 0)
-			phonebook.search();
-		else if (command.compare("EXIT") == 0)
-			break ;
-		else
-		{
-			std::cout << "Not a valid command" << "\n\n";
-			continue ;
-		}
+	for (int i = 0; i < hordeSize; i++)
+		horde[i].announce();
 
-		phonebook.displayContacts();
-	}
+	delete [] horde;
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/02 19:57:53 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/08 16:27:03 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/09 21:07:13 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-void	Contact::printMembers(void)
+void	Contact::printMembers(void) const
 {
 	std::cout << "First Name: " << _firstName << std::endl;
 	std::cout << "Last Name: " << _lastName << std::endl;
@@ -21,7 +21,7 @@ void	Contact::printMembers(void)
 	std::cout << "Darkest Secret: " << _darkestSecret << std::endl;
 }
 
-bool	Contact::areFieldsFilled(void)
+bool	Contact::areFieldsFilled(void) const
 {
 	if ((_firstName.length() == 0)
 		|| (_lastName.length() == 0)
@@ -32,15 +32,6 @@ bool	Contact::areFieldsFilled(void)
 		return (false);
 	}
 	return (true);
-}
-
-void	Contact::resetStrings(void)
-{
-	_firstName.erase();
-	_lastName.erase();
-	_nickname.erase();
-	_phoneNumber.erase();
-	_darkestSecret.erase();
 }
 
 // #############################################################################
@@ -55,9 +46,9 @@ Contact::Contact(void)
 		_darkestSecret()
 { }
 
-Contact::Contact(std::string &newFirstName, std::string &newLastName, \
-				std::string &newNickname, std::string &newPhoneNumber, \
-				std::string &newDarkestSecret)
+Contact::Contact(const std::string &newFirstName, const std::string &newLastName, \
+				const std::string &newNickname, const std::string &newPhoneNumber, \
+				const std::string &newDarkestSecret)
 	:	_firstName(newFirstName),
 		_lastName(newLastName),
 		_nickname(newNickname),
@@ -65,7 +56,7 @@ Contact::Contact(std::string &newFirstName, std::string &newLastName, \
 		_darkestSecret(newDarkestSecret)
 { }
 
-Contact::Contact(Contact &copy)
+Contact::Contact(const Contact &copy)
 	:	_firstName(copy._firstName),
 		_lastName(copy._lastName),
 		_nickname(copy._nickname),
@@ -80,27 +71,27 @@ Contact::~Contact(void)
 // ################################## WETTERS ##################################
 // #############################################################################
 
-std::string		&Contact::getFirstName(void)
+const std::string		&Contact::getFirstName(void) const
 {
 	return (_firstName);
 }
 
-std::string		&Contact::getLastName(void)
+const std::string		&Contact::getLastName(void) const
 {
 	return (_lastName);
 }
 
-std::string		&Contact::getNickname(void)
+const std::string		&Contact::getNickname(void) const
 {
 	return (_nickname);
 }
 
-std::string		&Contact::getPhoneNumber(void)
+const std::string		&Contact::getPhoneNumber(void) const
 {
 	return (_phoneNumber);
 }
 
-std::string		&Contact::getDarkestSecret(void)
+const std::string		&Contact::getDarkestSecret(void) const
 {
 	return (_darkestSecret);
 }

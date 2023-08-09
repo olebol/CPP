@@ -5,40 +5,28 @@
 /*                                                     +:+                    */
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/02 21:56:54 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 21:13:10 by opelser       ########   odam.nl         */
+/*   Created: 2023/08/07 22:15:50 by opelser       #+#    #+#                 */
+/*   Updated: 2023/08/09 17:15:42 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
+#include <iostream>
 
 int		main(void)
 {
-	PhoneBook		phonebook;
-	std::string		command;
-	
-	phonebook.displayContacts();
-	while (std::cin.fail() == false)
-	{
-		std::cout << "Enter a command: ";
-		getline(std::cin, command);
-		if (command.empty() == true)
-			continue ;
+	std::string		str = "HI THIS IS BRAIN";
+	std::string		*ptr = &str;
+	std::string		&ref = str;
 
-		if (command.compare("ADD") == 0)
-			phonebook.add();
-		else if (command.compare("SEARCH") == 0)
-			phonebook.search();
-		else if (command.compare("EXIT") == 0)
-			break ;
-		else
-		{
-			std::cout << "Not a valid command" << "\n\n";
-			continue ;
-		}
+	std::cout << "str : " << &str << std::endl;
+	std::cout << "ptr : " << ptr << std::endl;
+	std::cout << "ref : " << &ref << std::endl;
 
-		phonebook.displayContacts();
-	}
+	std::cout << "\n";
+
+	std::cout << "str : " << str << std::endl;
+	std::cout << "ptr : " << *ptr << std::endl;
+	std::cout << "ref : " << ref << std::endl;
+
 	return (0);
 }

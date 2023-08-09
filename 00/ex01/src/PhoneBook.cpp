@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/03 01:00:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/08 16:33:36 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/09 21:08:27 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void	PhoneBook::add(void)
 	if (isFieldEmpty(secret) == true)
 		return ;
 
-	_contacts[_index].~Contact();
-	Contact		newContact(first, last, nick, phone, secret);
+	Contact newContact(first, last, nick, phone, secret);
 	_contacts[_index] = newContact;
 	std::cout <<  "\n" << "Contact " << this->_index + 1 << " succesfully created" << "\n";
 
@@ -81,7 +80,7 @@ void	PhoneBook::add(void)
 		this->_index = 0;
 }
 
-static void		printField(std::string &field, std::string end)
+static void		printField(const std::string &field, const std::string end)
 {
 	if (field.length() > 10)
 		std::cout << field.substr(0, 9) << ".";
@@ -94,7 +93,7 @@ static void		printField(std::string &field, std::string end)
 	std::cout << end;
 }
 
-void	PhoneBook::displayContacts(void)
+void	PhoneBook::displayContacts(void) const
 {
 	std::cout << "\n" << HORIZONTAL_EDGE << TABLE_INFO << HORIZONTAL_EDGE;
 	for (int i = 0; i < 8; i++)
@@ -112,7 +111,7 @@ void	PhoneBook::displayContacts(void)
 	std::cout << HORIZONTAL_EDGE << "\n";
 }
 
-void	PhoneBook::search(void)
+void	PhoneBook::search(void) const
 {
 	std::string		input;
 	int				index = 0;
