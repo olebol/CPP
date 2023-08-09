@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/07 22:16:29 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/07 22:39:39 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/08 21:40:54 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@ class Zombie
 	public:
 		// Constructors
 		Zombie(void);
-		Zombie(std::string name);
+		Zombie(std::string &name);
 		Zombie(Zombie &copy);
-		~Zombie();
+		~Zombie(void);
 
 		// Functions
 		std::string		getName(void);
 		void			announce(void);
-		
 };
 
 Zombie*		newZombie(std::string name);
