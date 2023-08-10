@@ -1,5 +1,5 @@
 NAME			:= weapons
-NICKNAME		:= EX00 - UNNECESSARY VIOLENCE
+NICKNAME		:= EX03 - UNNECESSARY VIOLENCE
 
 # Directories
 HDR_DIR			:= include

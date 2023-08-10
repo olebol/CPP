@@ -1,5 +1,5 @@
 NAME			:= more_brains
-NICKNAME		:= EX00 - MooooorrrrreeeeeE BraiiiiiiinnnzzzZ
+NICKNAME		:= EX01 - MooooorrrrreeeeeE BraiiiiiiinnnzzzZ
 
 # Directories
 HDR_DIR			:= include

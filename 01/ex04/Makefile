@@ -1,5 +1,5 @@
-NAME			:= brain
-NICKNAME		:= EX02 - HI THIS IS BRAIN
+NAME			:= sed
+NICKNAME		:= EX04 - SED IS FOR LOSERS
 
 # Directories
 HDR_DIR			:= include

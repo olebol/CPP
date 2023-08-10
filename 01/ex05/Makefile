@@ -1,5 +1,5 @@
-NAME			:= brain
-NICKNAME		:= EX02 - HI THIS IS BRAIN
+NAME			:= harl
+NICKNAME		:= EX05 - HARL 2.0
 
 # Directories
 HDR_DIR			:= include
