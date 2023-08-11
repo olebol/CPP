@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 17:25:01 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/11 18:36:24 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 20:55:03 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,37 @@
 #include <random>
 #include <ctime>
 
+#define LEVELAMOUNT	4
+
 #define C_LRED		"\x1b[38;2;255;128;128m"
 #define C_LBLUE		"\x1b[38;2;128;128;255m"
 #define C_LGREEN	"\x1b[38;2;128;255;128m"
-# define C_LYELLOW	"\x1b[38;2;255;255;128m"
+#define C_LYELLOW	"\x1b[38;2;255;255;128m"
 
 #define C_RESET		"\x1b[0m"
 #define C_BOLD		"\x1b[1m"
 
-// Constructors
+// ************************************************************************** //
+//                                Constructors                                //
+// ************************************************************************** //
 Harl::Harl(void)
-{
-}
+{ }
 
-
+// ************************************************************************** //
+//                                Destructors                                //
+// ************************************************************************** //
 Harl::~Harl()
-{
-}
+{ }
 
-// Methods
-void		Harl::debug(void)
+// ************************************************************************** //
+//                               Private Methods                              //
+// ************************************************************************** //
+
+void		Harl::_debug(void)
 {
-	int			random = std::rand() % 4;
-	const		std::string		quotes[4] = 
+	const int				quoteAmount = 4;
+	const int				random = std::rand() % quoteAmount;
+	const std::string		quotes[quoteAmount] = 
 	{
 		"If anyone needs me, I'll be taking a nap! A-a-and clean this place up or dungeon! Three hours dungeon",
 		"I am within my rights!",
@@ -48,10 +56,11 @@ void		Harl::debug(void)
 	std::cout << C_LGREEN << C_BOLD << quotes[random] << C_RESET << std::endl;
 }
 
-void		Harl::info(void)
+void		Harl::_info(void)
 {
-	int			random = std::rand() % 3;
-	const		std::string		quotes[3] = 
+	const int				quoteAmount = 3;
+	const int				random = std::rand() % quoteAmount;
+	const std::string		quotes[quoteAmount] = 
 	{
 		"Castle Lemongrab has no citizens! You have excess candies! You must donate! Donate!",
 		"Blombo, you must heed my instructions! Take off your thiiings!",
@@ -61,11 +70,13 @@ void		Harl::info(void)
 	std::cout << C_LBLUE << C_BOLD << quotes[random] << C_RESET << std::endl;
 }
 
-void		Harl::warning(void)
+void		Harl::_warning(void)
 {
-	int			random = std::rand() % 3;
-	const		std::string		quotes[3] = 
+	const int				quoteAmount = 4;
+	const int				random = std::rand() % quoteAmount;
+	const std::string		quotes[quoteAmount] = 
 	{
+		"This castle is in unacceptable condition! Unacceptable!",
 		"Too young! Too young to rule the kingdom!",
 		"Stop screaming! Why are you screaming?!",
 		"Oh! OOHH! Oh! This sounds awful!!!"
@@ -74,12 +85,12 @@ void		Harl::warning(void)
 	std::cout << C_LYELLOW << C_BOLD << quotes[random] << C_RESET << std::endl;
 }
 
-void		Harl::error(void)
+void		Harl::_error(void)
 {
-	int			random = std::rand() % 4;
-	const		std::string		quotes[4] = 
+	const int				quoteAmount = 3;
+	const int				random = std::rand() % quoteAmount;
+	const std::string		quotes[quoteAmount] = 
 	{
-		"This castle is in unacceptable condition! Unacceptable!",
 		"Twelve years dungeon. All of you. Dungeon. Seven years, no trials. C'mon, let's move it!",
 		"One million years dungeon!",
 		"You serve no function. You must be destroyed."
@@ -88,31 +99,32 @@ void		Harl::error(void)
 	std::cout << C_LRED << C_BOLD << quotes[random] << C_RESET << std::endl;
 }
 
+// ************************************************************************** //
+//                               Public Methods                               //
+// ************************************************************************** //
+
 void		Harl::complain(std::string level)
 {
-	void	(Harl::*function[4])(void) =
+	void	(Harl::*function[LEVELAMOUNT])(void) =
 	{
-		&Harl::debug,
-		&Harl::info,
-		&Harl::warning,
-		&Harl::error
+		&Harl::_debug,
+		&Harl::_info,
+		&Harl::_warning,
+		&Harl::_error
 	} ; // Pointers to member functions
 
-	const std::string		levels[4] =
+	const std::string		levels[LEVELAMOUNT] =
 	{
-		"debug",
-		"info",
-		"warning",
-		"error"
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR"
 	} ; // All complaint levels
 
-	// Generates a random seed for the rand() function, which gets used to select a random quote
-	std::srand(static_cast<unsigned int>(std::time(nullptr)));
-
 	// Checks what complaint level is called
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < LEVELAMOUNT; i++)
 	{
-		if (levels[i].compare(level) == 0)
+		if (level == levels[i])
 			(this->*(function[i]))();
 	}
 }

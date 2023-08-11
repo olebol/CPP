@@ -37,7 +37,7 @@ brains
 more_brains
 sed
 harl
-filter
+harlFilter
 
 # Other
 colors.h
