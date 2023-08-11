@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/09 17:26:40 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/11 20:01:04 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 20:51:49 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ int		main(int ac, char **av)
 {
 	try
 	{
+
 		if (ac != 2)
 			throw (std::invalid_argument("Incorrect use:\n ./harlFilter [level]"));
+
+		// Generates a random seed for the rand() function, which gets used to select a random quote
+		std::srand((unsigned int) (std::time(nullptr)));
 
 		Harl		lemongrab(av[1]);
 
