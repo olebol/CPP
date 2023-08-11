@@ -1,4 +1,4 @@
-NAME			:= filter
+NAME			:= harlFilter
 NICKNAME		:= EX06 - HARL FILTER
 
 # Directories
@@ -17,10 +17,12 @@ endif
 
 # Includes
 HDR_FILES		:=							\
+					Harl.hpp				\
 
 # Files
 SRC_FILES		:=							\
 					main.cpp				\
+					Harl.cpp				\
 
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
