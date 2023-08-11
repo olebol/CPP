@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 17:17:04 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/11 20:56:50 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 22:04:35 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ class Harl
 
 		// Setters
 		void		setFilter(const std::string &newFilter);
-
-		// Getters
-		eLevel		getFilter(void) const;
 
 		// Methods
 		void		complain(const std::string &level);

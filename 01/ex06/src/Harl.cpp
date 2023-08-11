@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 17:25:01 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/11 20:55:11 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 22:04:27 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,6 @@ void			Harl::setFilter(const std::string &filterString)
 		}
 	}
 	_filter = insignificant;
-}
-
-// ************************************************************************** //
-//                                   Getters                                  //
-// ************************************************************************** //
-
-eLevel		Harl::getFilter(void) const
-{
-	return (this->_filter);
 }
 
 // ************************************************************************** //
@@ -175,22 +166,22 @@ void		Harl::complain(const std::string &level)
 	switch (whatExecute(*this, level))
 	{
 		case debug:
-			if (debug >= getFilter())
+			if (debug >= _filter)
 				(this->*complainFunction[debug])();
 			break ;
 
 		case info:
-			if (info >= getFilter())
+			if (info >= _filter)
 				(this->*complainFunction[info])();
 			break ;
 
 		case warning:
-			if (warning >= getFilter())
+			if (warning >= _filter)
 				(this->*complainFunction[warning])();
 			break ;
 	
 		case error:
-			if (error >= getFilter())
+			if (error >= _filter)
 				(this->*complainFunction[error])();
 			break ;
 

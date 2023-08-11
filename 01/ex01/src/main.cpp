@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/07 22:15:50 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 16:08:45 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 21:53:36 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int		main(void)
 		horde[i].announce();
 
 	delete [] horde;
+
 	return (0);
 }

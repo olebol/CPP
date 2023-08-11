@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/09 17:28:07 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 19:42:44 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 22:07:29 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ Weapon::Weapon(const Weapon &copy)
 	std::cout << C_LBLUE << C_BOLD << "Constructing a copy of " \
 				<< this->_type << "..." << C_RESET << std::endl;
 }
+
+// ************************************************************************** //
+//                                 Destructors                                //
+// ************************************************************************** //
 
 Weapon::~Weapon(void)
 {

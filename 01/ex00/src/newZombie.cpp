@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/07 22:27:48 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/07 22:35:12 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 21:48:57 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 	the function scope.
 */
 
-Zombie* newZombie(std::string name)
+Zombie*		newZombie(std::string name)
 {
 	Zombie		*newZomb = new Zombie(name);
 

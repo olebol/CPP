@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/09 17:39:59 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 20:41:50 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 22:21:40 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,18 @@
 
 class HumanA
 {
-private:
-	std::string			_name;
-	Weapon				&_weapon;
+	private:
+		std::string			_name;
+		Weapon				&_weapon;
 
-public:
-	HumanA(const std::string &name, Weapon &weapon);
-	HumanA(const HumanA &copy);
-	~HumanA(void);
+	public:
+		// Constructors
+		HumanA(const std::string &name, Weapon &weapon);
+		HumanA(const HumanA &copy);
+		~HumanA(void);
 
-	// Methods
-	void		attack(void);
+		// Methods
+		void		attack(void);
 };
 
 #endif

@@ -6,17 +6,17 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/07 22:15:50 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 15:50:23 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 21:47:28 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../include/Zombie.hpp"
 
 int		main(void)
 {
-	std::cout << "Calling newZombie: " << std::endl;
-	Zombie *Ken = newZombie("Ken");
-	std::cout << "Finished newZombie" << std::endl;
+	std::cout << "Initializing Ken: " << std::endl;
+	Zombie		*Ken = newZombie("Ken");
+	std::cout << "Ken is created" << std::endl;
 	Ken->announce();
 
 	std::cout << "Calling randomChump: " << std::endl;

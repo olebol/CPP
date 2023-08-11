@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/09 17:58:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 20:41:47 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 22:21:41 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ HumanA::HumanA(const HumanA &copy)
 	std::cout << C_LBLUE << C_BOLD << "Constructing a copy of " \
 				<< this->_name << "..." << C_RESET << std::endl;
 }
+
+// ************************************************************************** //
+//                                 Destructors                                //
+// ************************************************************************** //
 
 HumanA::~HumanA()
 {

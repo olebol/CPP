@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/09 17:27:20 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 19:29:44 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 22:09:52 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,21 @@
 
 class Weapon
 {
-private:
-	std::string		_type;
+	private:
+		std::string				_type;
 
-public:
-	Weapon(void);
-	Weapon(const std::string &type);
-	Weapon(const Weapon &copy);
-	~Weapon(void);
+	public:
+		// Constructors
+		Weapon(void);
+		Weapon(const std::string &type);
+		Weapon(const Weapon &copy);
+		~Weapon(void);
 
-	// Getters
-	const std::string		&getType(void) const;
+		// Getters
+		const std::string		&getType(void) const;
 
-	// Setters
-	void					setType(const std::string &type);
+		// Setters
+		void					setType(const std::string &type);
 };
 
 #endif

@@ -6,17 +6,17 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/07 22:18:18 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 20:46:36 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 21:51:19 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 #define C_LRED		"\x1b[38;2;255;128;128m"
-#define C_LBLUE	"\x1b[38;2;128;128;255m"
+#define C_LBLUE		"\x1b[38;2;128;128;255m"
 #define C_LGREEN	"\x1b[38;2;128;255;128m"
 
-#define C_RESET	"\x1b[0m"
+#define C_RESET		"\x1b[0m"
 #define C_BOLD		"\x1b[1m"
 
 // ************************************************************************** //
@@ -24,22 +24,26 @@
 // ************************************************************************** //
 
 Zombie::Zombie(void)
-	: _name()
+	:	_name()
 {
 	std::cout << C_BOLD << C_LBLUE << "A generic zombie has risen" << C_RESET << std::endl;
 }
 
 Zombie::Zombie(const std::string &name)
-	: _name(name)
+	:	_name(name)
 {
 	std::cout << _name << C_BOLD << C_LBLUE << " has risen" <<  C_RESET << std::endl;
 }
 
 Zombie::Zombie(const Zombie &copy)
-	: _name(copy.getName())
+	:	_name(copy.getName())
 {
 	std::cout << _name << C_BOLD << C_LBLUE << " has risen" <<  C_RESET << std::endl;
 }
+
+// ************************************************************************** //
+//                                Destructors                                 //
+// ************************************************************************** //
 
 Zombie::~Zombie()
 {
@@ -55,9 +59,8 @@ std::string		Zombie::getName(void) const
 	return (_name);
 }
 
-
 // ************************************************************************** //
-//                                 Functions                                  //
+//                                  Methods                                   //
 // ************************************************************************** //
 
 void			Zombie::announce(void) const

@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/07 22:18:18 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 21:16:42 by opelser       ########   odam.nl         */
+/*   Updated: 2023/08/11 21:56:39 by opelser       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ Zombie::Zombie(const Zombie &copy)
 {
 	std::cout << _name << C_BOLD << C_LBLUE << " has risen" <<  C_RESET << std::endl;
 }
+
+// ************************************************************************** //
+//                                 Destructors                                //
+// ************************************************************************** //
 
 Zombie::~Zombie()
 {
