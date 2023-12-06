@@ -17,13 +17,20 @@
 class Fixed
 {
 	private:
+		int					_fixedPointValue;
+		static const int	_fractionalBits = 8;
 
 	public:
 		// Constructors
 		Fixed(const Fixed &copy);
 		Fixed(void);
+		Fixed &operator=(const Fixed &rhs);
 		~Fixed();
 
+		int getRawBits(void) const;
+		void setRawBits(const int raw);
 } ;
+
+
 
 #endif
