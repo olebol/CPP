@@ -1,5 +1,5 @@
-NAME			:= ex01
-NICKNAME		:= EX01 - USEFUL FIXED-POINT NUMBER CLASS
+NAME			:= ex02
+NICKNAME		:= EX02 - NOW WE'RE TALKING
 
 # Directories
 HDR_DIR			:= include

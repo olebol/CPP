@@ -27,6 +27,7 @@ class Fixed
 		Fixed	&operator=(const Fixed &rhs);
 		~Fixed();
 
+		// Setters and Getters
 		int		getRawBits(void) const;
 		void	setRawBits(const int raw);
 } ;
