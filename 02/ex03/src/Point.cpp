@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:01:13 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/12 19:42:04 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/12 19:55:29 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ Point::Point(const Point &copy)
 	: _x(copy._x), _y(copy._y)
 {
 	// std::cout << "Copy constructor called" << std::endl;
-	*this = copy;
 }
 
 Point	&Point::operator=(const Point &rhs)
