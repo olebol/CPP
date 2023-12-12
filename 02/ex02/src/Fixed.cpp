@@ -62,6 +62,100 @@ Fixed::~Fixed()
 }
 
 // ************************************************************************** //
+//                            Comparison Operators                            //
+// ************************************************************************** //
+
+bool	Fixed::operator>(const Fixed &rhs) const
+{
+	return (this->getRawBits() > rhs.getRawBits());
+}
+
+bool	Fixed::operator<(const Fixed &rhs) const
+{
+	return (this->getRawBits() < rhs.getRawBits());
+}
+
+bool	Fixed::operator>=(const Fixed &rhs) const
+{
+	return (this->getRawBits() >= rhs.getRawBits());
+}
+
+bool	Fixed::operator<=(const Fixed &rhs) const
+{
+	return (this->getRawBits() <= rhs.getRawBits());
+}
+
+bool	Fixed::operator==(const Fixed &rhs) const
+{
+	return (this->getRawBits() == rhs.getRawBits());
+}
+
+bool	Fixed::operator!=(const Fixed &rhs) const
+{
+	return (this->getRawBits() != rhs.getRawBits());
+}
+
+// ************************************************************************** //
+//                            Arithmetic Operators                            //
+// ************************************************************************** //
+
+Fixed	Fixed::operator+(const Fixed &rhs)
+{
+	return (this->toFloat() + rhs.toFloat());
+}
+
+Fixed	Fixed::operator-(const Fixed &rhs)
+{
+	return (this->toFloat() - rhs.toFloat());
+}
+
+Fixed	Fixed::operator*(const Fixed &rhs)
+{
+	return (this->toFloat() * rhs.toFloat());
+}
+
+Fixed	Fixed::operator/(const Fixed &rhs)
+{
+	return (this->toFloat() / rhs.toFloat());
+}
+
+// ************************************************************************** //
+//                      Increment and Decrement Operators                     //
+// ************************************************************************** //
+
+Fixed	&Fixed::operator++(void)
+{
+	this->_fixedPointValue++;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int placeholder)
+{
+	(void) placeholder;
+
+	Fixed		old(*this);
+
+	this->_fixedPointValue++;
+	return (old);
+}
+
+Fixed	&Fixed::operator--(void)
+{
+	this->_fixedPointValue--;
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int placeholder)
+{
+	(void) placeholder;
+
+	Fixed		old(*this);
+
+	this->_fixedPointValue--;
+	return (old);
+}
+
+// ************************************************************************** //
 //                                   Setters                                  //
 // ************************************************************************** //
 
@@ -78,7 +172,6 @@ int		Fixed::getRawBits(void) const
 {
 	return (this->_fixedPointValue);
 }
-
 
 // ************************************************************************** //
 //                               Private Methods                              //

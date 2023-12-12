@@ -33,6 +33,26 @@ class Fixed
 		Fixed	&operator=(const Fixed &rhs);
 		~Fixed();
 
+		// Comparison Operators
+		bool	operator>(const Fixed &rhs) const;
+		bool	operator<(const Fixed &rhs) const;
+		bool	operator>=(const Fixed &rhs) const;
+		bool	operator<=(const Fixed &rhs) const;
+		bool	operator==(const Fixed &rhs) const;
+		bool	operator!=(const Fixed &rhs) const;
+
+		// Arithmetic Operators
+		Fixed	operator+(const Fixed &rhs);
+		Fixed	operator-(const Fixed &rhs);
+		Fixed	operator*(const Fixed &rhs);
+		Fixed	operator/(const Fixed &rhs);
+
+		// Increment and Decrement Operators
+		Fixed	&operator++(void);
+		Fixed	operator++(int placeholder);
+		Fixed	&operator--(void);
+		Fixed	operator--(int placeholder);
+
 
 		// Setters and Getters
 		int		getRawBits(void) const;

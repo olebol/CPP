@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:26:40 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/06 20:35:01 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/12 17:29:02 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,55 @@
 
 #include <iostream>
 
-int		main(void)
+void	comparison(Fixed const &a, Fixed const &b)
+{
+	if (a < b == true)
+		std::cout << "Correct result" << std::endl;
+	else
+		std::cout << "Incorrect result" << std::endl;
+
+	if (a > b == false)
+		std::cout << "Correct result" << std::endl;
+	else
+		std::cout << "Incorrect result" << std::endl;
+	
+	if (a <= b == true)
+		std::cout << "Correct result" << std::endl;
+	else
+		std::cout << "Incorrect result" << std::endl;
+
+	if (a >= b == false)
+		std::cout << "Correct result" << std::endl;
+	else
+		std::cout << "Incorrect result" << std::endl;
+
+	if (a == b == false)
+		std::cout << "Correct result" << std::endl;
+	else
+		std::cout << "Incorrect result" << std::endl;
+	
+	if (a != b == true)
+		std::cout << "Correct result" << std::endl;
+	else
+		std::cout << "Incorrect result" << std::endl;
+}
+
+int main(void)
 {
 	Fixed			a;
-	Fixed const		b(10);
-	Fixed const		c(42.42f);
-	Fixed const		d(b);
+	Fixed const		b(Fixed(5.05f) * Fixed(2));
 
-	a = Fixed(1234.4321f);
+	comparison(a, b);
 
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
 
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	return 0;
+	std::cout << b << std::endl;
+
+	// std::cout << Fixed::max( a, b ) << std::endl;
+
+	return (0);
 }
