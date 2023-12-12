@@ -42,17 +42,16 @@ class Fixed
 		bool	operator!=(const Fixed &rhs) const;
 
 		// Arithmetic Operators
-		Fixed	operator+(const Fixed &rhs);
-		Fixed	operator-(const Fixed &rhs);
-		Fixed	operator*(const Fixed &rhs);
-		Fixed	operator/(const Fixed &rhs);
+		Fixed	operator+(const Fixed &rhs) const;
+		Fixed	operator-(const Fixed &rhs) const;
+		Fixed	operator*(const Fixed &rhs) const;
+		Fixed	operator/(const Fixed &rhs) const;
 
 		// Increment and Decrement Operators
 		Fixed	&operator++(void);
 		Fixed	operator++(int placeholder);
 		Fixed	&operator--(void);
 		Fixed	operator--(int placeholder);
-
 
 		// Setters and Getters
 		int		getRawBits(void) const;
@@ -62,9 +61,13 @@ class Fixed
 		float	toFloat(void) const;
 		int		toInt(void) const;
 
+		// Static Methods
+		static Fixed		&min(Fixed &a, Fixed &b);
+		static const Fixed	&min(const Fixed &a, const Fixed &b);
+		static Fixed		&max(Fixed &a, Fixed &b);
+		static const Fixed	&max(Fixed const &a, Fixed const &b);
 } ;
 
 std::ostream	&operator<<(std::ostream &os, Fixed const &rhs);
-
 
 #endif

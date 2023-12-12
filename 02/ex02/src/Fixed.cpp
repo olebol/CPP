@@ -99,22 +99,22 @@ bool	Fixed::operator!=(const Fixed &rhs) const
 //                            Arithmetic Operators                            //
 // ************************************************************************** //
 
-Fixed	Fixed::operator+(const Fixed &rhs)
+Fixed	Fixed::operator+(const Fixed &rhs) const
 {
 	return (this->toFloat() + rhs.toFloat());
 }
 
-Fixed	Fixed::operator-(const Fixed &rhs)
+Fixed	Fixed::operator-(const Fixed &rhs) const
 {
 	return (this->toFloat() - rhs.toFloat());
 }
 
-Fixed	Fixed::operator*(const Fixed &rhs)
+Fixed	Fixed::operator*(const Fixed &rhs) const
 {
 	return (this->toFloat() * rhs.toFloat());
 }
 
-Fixed	Fixed::operator/(const Fixed &rhs)
+Fixed	Fixed::operator/(const Fixed &rhs) const
 {
 	return (this->toFloat() / rhs.toFloat());
 }
@@ -174,12 +174,6 @@ int		Fixed::getRawBits(void) const
 }
 
 // ************************************************************************** //
-//                               Private Methods                              //
-// ************************************************************************** //
-
-
-
-// ************************************************************************** //
 //                               Public Methods                               //
 // ************************************************************************** //
 
@@ -191,6 +185,42 @@ float	Fixed::toFloat(void) const
 int		Fixed::toInt(void) const
 {
 	return ((int) this->_fixedPointValue >> this->_fractionalBits);
+}
+
+// ************************************************************************** //
+//                               Static Methods                               //
+// ************************************************************************** //
+
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
+const Fixed		&Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
+const Fixed		&Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
 }
 
 // ************************************************************************** //

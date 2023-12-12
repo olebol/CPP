@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:26:40 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/12 17:29:02 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/12 17:50:03 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int main(void)
 
 	std::cout << b << std::endl;
 
-	// std::cout << Fixed::max( a, b ) << std::endl;
+	std::cout << Fixed::min(a, b) << std::endl;
+	std::cout << Fixed::max(a, b) << std::endl;
 
 	return (0);
 }
