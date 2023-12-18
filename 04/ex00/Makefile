@@ -21,8 +21,8 @@ HDR_FILES		:=							\
 					Dog.hpp					\
 					Cat.hpp					\
 \
-					# WrongAnimal.hpp			\
-					# WrongCat.hpp			\
+					WrongAnimal.hpp			\
+					WrongCat.hpp			\
 
 # Files
 SRC_FILES		:=							\
@@ -31,8 +31,8 @@ SRC_FILES		:=							\
 					Dog.cpp					\
 					Cat.cpp					\
 \
-					# WrongAnimal.cpp			\
-					# WrongCat.cpp			\
+					WrongAnimal.cpp			\
+					WrongCat.cpp			\
 
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))

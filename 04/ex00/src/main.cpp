@@ -6,18 +6,20 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:26:40 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 21:18:14 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 22:28:26 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Animal.hpp"
 #include "../include/Cat.hpp"
 #include "../include/Dog.hpp"
+#include "../include/WrongAnimal.hpp"
+#include "../include/WrongCat.hpp"
 
 #include <iostream>
 #include <string>
 
-int main()
+void	checkNormal(void)
 {
 	const Animal*		animal = new Animal();
 	const Animal*		cat = new Cat();
@@ -25,21 +27,56 @@ int main()
 
 	std::cout << std::endl;
 
+	// Print types
 	std::cout << animal->getType() << " " << std::endl;
 	std::cout << cat->getType() << " " << std::endl;
 	std::cout << dog->getType() << " " << std::endl;
 
 	std::cout << std::endl;
 
+	// Make sounds
+	animal->makeSound();
 	cat->makeSound(); //will output the cat sound!
 	dog->makeSound();
-	animal->makeSound();
 
 	std::cout << std::endl;
 
+	// Free memory
 	delete animal;
 	delete cat;
 	delete dog;
+
+	std::cout << std::endl;
+}
+
+void	checkWrong(void)
+{
+	const WrongAnimal*	wrongAnimal = new WrongAnimal();
+	const WrongCat*		wrongCat = new WrongCat();
+
+	std::cout << std::endl;
+
+	// Print types
+	std::cout << wrongAnimal->getType() << std::endl;
+	std::cout << wrongCat->getType() << std::endl;
+
+	std::cout << std::endl;
+
+	// Make sounds
+	wrongAnimal->makeSound();
+	wrongCat->makeSound();
+
+	std::cout << std::endl;
+
+	// Free memory
+	delete wrongAnimal;
+	delete wrongCat;
+}
+
+int main()
+{
+	checkNormal();
+	checkWrong();
 
 	return (0);
 }

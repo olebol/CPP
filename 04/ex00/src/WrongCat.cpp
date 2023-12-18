@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                       :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 19:39:29 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 22:28:06 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Dog.hpp"
+#include "../include/WrongCat.hpp"
 
 #include <iostream>
 
@@ -22,22 +22,22 @@
 //                                Constructors                                //
 // ************************************************************************** //
 
-Dog::Dog(void)
-	:	Animal("Dog")
+WrongCat::WrongCat(void)
+	:	WrongAnimal("WrongCat")
 {
-	std::cout << GREEN << "Dog: Default constructor called" << RESET << std::endl;
+	std::cout << GREEN << "WrongCat: Default constructor called" << RESET << std::endl;
 }
 
-Dog::Dog(const Dog &copy)
+WrongCat::WrongCat(const WrongCat &copy)
 {
-	std::cout << GREEN << "Dog: Copy constructor called" << RESET << std::endl;
+	std::cout << GREEN << "WrongCat: Copy constructor called" << RESET << std::endl;
 
 	*this = copy;
 }
 
-Dog	&Dog::operator=(const Dog &rhs)
+WrongCat	&WrongCat::operator=(const WrongCat &rhs)
 {
-	std::cout << GREEN << "Dog: Copy assignment operator called" << RESET << std::endl;
+	std::cout << GREEN << "WrongCat: Copy assignment operator called" << RESET << std::endl;
 
 	if (this != &rhs)
 	{
@@ -51,16 +51,16 @@ Dog	&Dog::operator=(const Dog &rhs)
 //                                 Destructors                                //
 // ************************************************************************** //
 
-Dog::~Dog()
+WrongCat::~WrongCat()
 {
-	std::cout << RED << "Dog: Destructor called" << RESET << std::endl;
+	std::cout << RED << "WrongCat: Destructor called" << RESET << std::endl;
 }
 
 // ************************************************************************** //
 //                               Member functions                             //
 // ************************************************************************** //
 
-void		Dog::makeSound(void) const
+void	WrongCat::makeSound(void) const
 {
-	std::cout << "Woof" << std::endl;
+	std::cout << "Meow" << std::endl;
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                       :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 19:39:29 by opelser          ###   ########.fr       */
+/*   Created: 2023/12/18 21:49:17 by opelser           #+#    #+#             */
+/*   Updated: 2023/12/18 22:26:30 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Animal.hpp"
+#include "../include/WrongAnimal.hpp"
 #include <iostream>
 
 #define GREEN "\033[32m"
@@ -21,22 +21,22 @@
 //                                Constructors                                //
 // ************************************************************************** //
 
-Animal::Animal(void)
-	:	_type("Animal")
+WrongAnimal::WrongAnimal(void)
+	:	_type("WrongAnimal")
 {
-	std::cout << GREEN << "Animal: Default constructor called" << RESET << std::endl;
+	std::cout << GREEN << "WrongAnimal: Default constructor called" << RESET << std::endl;
 }
 
-Animal::Animal(const Animal &copy)
+WrongAnimal::WrongAnimal(const WrongAnimal &copy)
 {
-	std::cout << GREEN << "Animal: Copy constructor called" << RESET << std::endl;
+	std::cout << GREEN << "WrongAnimal: Copy constructor called" << RESET << std::endl;
 
 	*this = copy;
 }
 
-Animal	&Animal::operator=(const Animal &rhs)
+WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &rhs)
 {
-	std::cout << GREEN << "Animal: Copy assignment operator called" << RESET << std::endl;
+	std::cout << GREEN << "WrongAnimal: Copy assignment operator called" << RESET << std::endl;
 
 	if (this != &rhs)
 	{
@@ -50,17 +50,17 @@ Animal	&Animal::operator=(const Animal &rhs)
 //                           Protected Constructors                           //
 // ************************************************************************** //
 
-Animal::Animal(const std::string &type)
+WrongAnimal::WrongAnimal(const std::string &type)
 	:	_type(type)
 {
-	std::cout << GREEN << "Animal: Parameterized constructor called" << RESET << std::endl;
+	std::cout << GREEN << "WrongAnimal: Parameterized constructor called" << RESET << std::endl;
 }
 
 // ************************************************************************** //
 //                                 Getters                                    //
 // ************************************************************************** //
 
-const std::string		&Animal::getType(void) const
+const std::string		&WrongAnimal::getType(void) const
 {
 	return (this->_type);
 }
@@ -69,16 +69,16 @@ const std::string		&Animal::getType(void) const
 //                                 Destructors                                //
 // ************************************************************************** //
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << RED << "Animal: Destructor called" << RESET << std::endl;
+	std::cout << RED << "WrongAnimal: Destructor called" << RESET << std::endl;
 }
 
 // ************************************************************************** //
 //                               Member functions                             //
 // ************************************************************************** //
 
-void		Animal::makeSound(void) const
+void	WrongAnimal::makeSound(void) const
 {
 	std::cout << "Animal sound" << std::endl;
 }

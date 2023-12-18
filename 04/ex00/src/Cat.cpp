@@ -17,7 +17,6 @@
 #define GREEN "\033[32m"
 #define RED "\033[31m"
 #define RESET "\033[0m"
-
 // ************************************************************************** //
 //                                Constructors                                //
 // ************************************************************************** //
@@ -25,19 +24,19 @@
 Cat::Cat(void)
 	:	Animal("Cat")
 {
-	std::cout << GREEN << "Default Cat constructor called" << RESET << std::endl;
+	std::cout << GREEN << "Cat: Default constructor called" << RESET << std::endl;
 }
 
 Cat::Cat(const Cat &copy)
 {
-	std::cout << GREEN << "Cat copy constructor called" << RESET << std::endl;
+	std::cout << GREEN << "Cat: Copy constructor called" << RESET << std::endl;
 
 	*this = copy;
 }
 
 Cat	&Cat::operator=(const Cat &rhs)
 {
-	std::cout << GREEN << "Cat copy assignment operator called" << RESET << std::endl;
+	std::cout << GREEN << "Cat: Copy assignment operator called" << RESET << std::endl;
 
 	if (this != &rhs)
 	{
@@ -53,7 +52,7 @@ Cat	&Cat::operator=(const Cat &rhs)
 
 Cat::~Cat()
 {
-	std::cout << RED << "Cat Destructor called" << RESET << std::endl;
+	std::cout << RED << "Cat: Destructor called" << RESET << std::endl;
 }
 
 // ************************************************************************** //
