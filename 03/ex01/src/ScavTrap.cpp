@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 16:07:43 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 16:33:22 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ ScavTrap::ScavTrap(void)
 	:	ClapTrap("ScavTrap")
 {
 	this->_hitPoints = 100;
+	this->_maxHitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
+
 	std::cout << GREEN << "Default ScavTrap constructor called" << RESET << std::endl;
 }
 
@@ -34,6 +36,7 @@ ScavTrap::ScavTrap(const std::string &name)
 	:	ClapTrap(name)
 {
 	this->_hitPoints = 100;
+	this->_maxHitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
 	std::cout << GREEN << "Parameterized ScavTrap constructor called" << RESET << std::endl;
@@ -71,5 +74,10 @@ ScavTrap::~ScavTrap()
 
 void	ScavTrap::guardGate(void)
 {
-	std::cout << "ScavTrap " << this->_name << " has entered Gate keeper mode" << std::endl;
+
+	if (this->canDoAction("guard") == false)
+		return ;
+	else
+		std::cout << this->_name << " has entered Gate keeper mode" << std::endl;
+	this->_energyPoints--;
 }
