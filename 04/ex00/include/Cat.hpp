@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 21:48:18 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 22:01:44 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 
 class Cat : public Animal
 {
-	private:
-		std::string		_type;
-
 	public:
 		// Constructors
 		Cat(void);

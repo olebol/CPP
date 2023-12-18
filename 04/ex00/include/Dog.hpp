@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 21:48:11 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 22:01:47 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 
 class Dog : public Animal
 {
-	private:
-		std::string		_type;
-
 	public:
 		// Constructors
 		Dog(void);

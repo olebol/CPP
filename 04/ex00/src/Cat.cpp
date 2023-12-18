@@ -23,7 +23,7 @@
 // ************************************************************************** //
 
 Cat::Cat(void)
-	:	Animal("Cat"), _type("Cat")
+	:	Animal("Cat")
 {
 	std::cout << GREEN << "Default Cat constructor called" << RESET << std::endl;
 }

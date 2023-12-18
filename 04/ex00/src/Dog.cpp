@@ -23,7 +23,7 @@
 // ************************************************************************** //
 
 Dog::Dog(void)
-	:	Animal("Dog"), _type("Dog")
+	:	Animal("Dog")
 {
 	std::cout << GREEN << "Default Dog constructor called" << RESET << std::endl;
 }
