@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/17 20:12:30 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 16:03:29 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class ScavTrap : public ClapTrap
 	public:
 		// Constructors
 		ScavTrap(void);
-		ScavTrap(const	std::string &name);
+		ScavTrap(const std::string &name);
 		ScavTrap(const ScavTrap &copy);
 		ScavTrap	&operator=(const ScavTrap &rhs);
 		~ScavTrap();

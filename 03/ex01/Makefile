@@ -18,11 +18,13 @@ endif
 # Includes
 HDR_FILES		:=							\
 					ClapTrap.hpp			\
+					ScavTrap.hpp			\
 
 # Files
 SRC_FILES		:=							\
 					main.cpp				\
 					ClapTrap.cpp			\
+					ScavTrap.cpp			\
 
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
