@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 16:43:18 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 19:33:47 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <string>
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	public:
 		// Constructors
@@ -27,7 +27,10 @@ class FragTrap : public ClapTrap
 		~FragTrap();
 
 		// Member functions
-		void		highFiveGuys(void);
+		virtual void		attack(const std::string &target);
+		virtual void		takeDamage(unsigned int amount);
+		virtual void		beRepaired(unsigned int amount);
+		void				highFiveGuys(void);
 } ;
 
 #endif

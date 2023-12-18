@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 16:33:30 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 19:32:24 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,10 @@ class ClapTrap
 		ClapTrap	&operator=(const ClapTrap &rhs);
 		~ClapTrap();
 
-		// Setters and Getters
-		
-
 		// Member functions
-		void		attack(const std::string &target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
+		virtual void		attack(const std::string &target);
+		virtual void		takeDamage(unsigned int amount);
+		virtual void		beRepaired(unsigned int amount);
 } ;
-
-
 
 #endif

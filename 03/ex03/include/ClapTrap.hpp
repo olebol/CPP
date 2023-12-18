@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 18:04:33 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 19:32:42 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,5 @@ class ClapTrap
 		virtual void		takeDamage(unsigned int amount);
 		virtual void		beRepaired(unsigned int amount);
 } ;
-
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 16:46:39 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 19:33:33 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 // ************************************************************************** //
 
 FragTrap::FragTrap(void)
-	:	ClapTrap("FragTrap Default")
+	:	ClapTrap("Default")
 {
 	this->_hitPoints = 100;
 	this->_maxHitPoints = 100;
@@ -79,8 +79,53 @@ void	FragTrap::highFiveGuys(void)
 		return ;
 	else
 	{
-		std::cout << this->_name << ": \"High five guys! ... Guys?\"" << std::endl;
+		std::cout << "FragTrap " << this->_name << ": \"High five guys! ... Guys?\"" << std::endl;
 		this->_energyPoints--;
 		// ego--;
 	}
+}
+
+void	FragTrap::attack(const std::string &target)
+{
+	if (!this->canDoAction("attack"))
+		return ;
+	std::cout << "FragTrap " << this->_name << " attacks " << target;
+	std::cout << " with explosions for " << this->_attackDamage << " points of damage!" << std::endl;
+
+	this->_energyPoints--;
+}
+
+void	FragTrap::takeDamage(unsigned int amount)
+{
+	if (this->_hitPoints <= 0)
+	{
+		std::cout << "FragTrap " << this->_name << " can't take any more damage!" << std::endl;
+	}
+	else if (this->_hitPoints - (int) amount <= 0)
+	{
+		std::cout << "FragTrap " << this->_name << " takes " << this->_hitPoints << " points of damage and becomes immobilized!" << std::endl;
+		this->_hitPoints = 0;
+	}
+	else
+	{
+		std::cout << "FragTrap " << this->_name << " takes " << amount << " points of damage!" << std::endl;
+		this->_hitPoints -= amount;
+	}
+}
+
+void	FragTrap::beRepaired(unsigned int amount)
+{
+	if (this->canDoAction("repair") == false)
+		return ;
+	if (this->_hitPoints + (int) amount > this->_maxHitPoints)
+	{
+		std::cout << "FragTrap " << this->_name << " repairs " << this->_maxHitPoints - this->_hitPoints << " HP and can't repair any more!" << std::endl;
+		this->_hitPoints = 10;
+	}
+	else
+	{
+		std::cout << "FragTrap " << this->_name << " repairs " << amount << " HP!" << std::endl;
+		this->_hitPoints += amount;
+	}
+	this->_energyPoints--;
 }

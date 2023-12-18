@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 18:33:05 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 19:38:39 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ScavTrap::guardGate(void)
 	if (this->canDoAction("guard") == false)
 		return ;
 	else
-		std::cout << "ScavTrap " << this->_name << " has entered Gate keeper mode" << std::endl;
+		std::cout << "ScavTrap " << this->_name << " has entered Gate keeper mode!" << std::endl;
 	this->_energyPoints--;
 }
 

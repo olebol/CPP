@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:26:40 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 16:49:12 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 19:34:42 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		main(void)
 {
-	FragTrap	Frag("FragTrap Frag");
+	FragTrap	Frag("Frag");
 
 	std::cout << std::endl;
 
