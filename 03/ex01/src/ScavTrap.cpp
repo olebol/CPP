@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 16:33:22 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 16:46:18 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 // ************************************************************************** //
 
 ScavTrap::ScavTrap(void)
-	:	ClapTrap("ScavTrap")
+	:	ClapTrap("ScavTrap Default")
 {
 	this->_hitPoints = 100;
 	this->_maxHitPoints = 100;
