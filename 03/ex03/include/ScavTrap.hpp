@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 18:05:50 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 21:42:06 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ScavTrap : virtual public ClapTrap
 		ScavTrap(const std::string &name);
 		ScavTrap(const ScavTrap &copy);
 		ScavTrap	&operator=(const ScavTrap &rhs);
-		~ScavTrap();
+		virtual ~ScavTrap();
 
 		// Member functions
 		virtual void		attack(const std::string &target);

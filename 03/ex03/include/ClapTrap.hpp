@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 19:32:42 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 21:41:53 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ClapTrap
 		ClapTrap(const std::string &name);
 		ClapTrap(const ClapTrap &copy);
 		ClapTrap	&operator=(const ClapTrap &rhs);
-		~ClapTrap();
+		virtual ~ClapTrap();
 
 		// Member functions
 		virtual void		attack(const std::string &target);

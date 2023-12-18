@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 19:33:47 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 21:41:24 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class FragTrap : virtual public ClapTrap
 		FragTrap(const std::string &name);
 		FragTrap(const FragTrap &copy);
 		FragTrap	&operator=(const FragTrap &rhs);
-		~FragTrap();
+		virtual ~FragTrap();
 
 		// Member functions
 		virtual void		attack(const std::string &target);
