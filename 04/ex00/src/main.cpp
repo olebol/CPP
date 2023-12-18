@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:26:40 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 22:28:26 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 22:39:54 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	checkNormal(void)
 
 void	checkWrong(void)
 {
-	const WrongAnimal*	wrongAnimal = new WrongAnimal();
-	const WrongCat*		wrongCat = new WrongCat();
+	const WrongAnimal*		wrongAnimal = new WrongAnimal();
+	const WrongAnimal*		wrongCat = new WrongCat();
 
 	std::cout << std::endl;
 

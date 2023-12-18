@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 21:49:17 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 22:26:30 by opelser          ###   ########.fr       */
+/*   Updated: 2023/12/18 22:40:12 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,3 @@ void	WrongAnimal::makeSound(void) const
 {
 	std::cout << "Animal sound" << std::endl;
 }
-

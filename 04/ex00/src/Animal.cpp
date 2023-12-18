@@ -82,4 +82,3 @@ void		Animal::makeSound(void) const
 {
 	std::cout << "Animal sound" << std::endl;
 }
-
