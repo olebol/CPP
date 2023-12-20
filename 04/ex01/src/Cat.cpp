@@ -17,6 +17,7 @@
 #define GREEN "\033[32m"
 #define RED "\033[31m"
 #define RESET "\033[0m"
+
 // ************************************************************************** //
 //                                Constructors                                //
 // ************************************************************************** //
@@ -43,6 +44,8 @@ Cat	&Cat::operator=(const Cat &rhs)
 	if (this != &rhs)
 	{
 		this->_type = rhs._type;
+
+		Animal::operator=(rhs);
 
 		this->_brain = new Brain(*rhs._brain);
 	}

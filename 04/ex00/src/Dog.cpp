@@ -42,6 +42,8 @@ Dog	&Dog::operator=(const Dog &rhs)
 	if (this != &rhs)
 	{
 		this->_type = rhs._type;
+
+		Animal::operator=(rhs);
 	}
 
 	return (*this);

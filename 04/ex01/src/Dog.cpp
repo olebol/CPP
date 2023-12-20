@@ -44,6 +44,9 @@ Dog	&Dog::operator=(const Dog &rhs)
 	if (this != &rhs)
 	{
 		this->_type = rhs._type;
+
+		Animal::operator=(rhs);
+
 		this->_brain = new Brain(*rhs._brain);
 	}
 
@@ -79,5 +82,3 @@ const std::string	&Dog::getIdea(int index) const
 {
 	return (this->_brain->getIdea(index));
 }
-
-
