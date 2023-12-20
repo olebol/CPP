@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 22:14:39 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/20 19:26:34 by opelser          ###   ########.fr       */
+/*   Created: 2023/12/18 23:44:51 by opelser           #+#    #+#             */
+/*   Updated: 2023/12/18 23:57:17 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-#include <string>
+# include <string>
 
-class WrongAnimal
+class Brain
 {
-	protected:
-		std::string		_type;
-
-		WrongAnimal(const std::string &type);
+	private:
+		std::string			_ideas[100];
 
 	public:
 		// Constructors
-		WrongAnimal(void);
-		WrongAnimal(const WrongAnimal &copy);
-		WrongAnimal	&operator=(const WrongAnimal &rhs);
-		~WrongAnimal();
+		Brain(void);
+		Brain(const Brain &copy);
+		Brain	&operator=(const Brain &rhs);
+
+		// Destructors
+		~Brain(void);
+
+		// Setters
+		void				setIdea(int index, const std::string &idea);
 
 		// Getters
-		const std::string		&getType(void) const;
-
-		// Member functions
-		void					makeSound(void) const;
+		const std::string	&getIdea(int index) const;
 } ;
 
 #endif
