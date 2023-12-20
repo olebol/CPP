@@ -17,6 +17,7 @@
 #define GREEN "\033[32m"
 #define RED "\033[31m"
 #define RESET "\033[0m"
+
 // ************************************************************************** //
 //                                Constructors                                //
 // ************************************************************************** //
@@ -81,6 +82,7 @@ const std::string	&Brain::getIdea(int index) const
 		std::cout << "getIdea: index out of range" << std::endl;
 		return (this->_ideas[0]);
 	}
+
 	return (this->_ideas[index]);
 }
 
