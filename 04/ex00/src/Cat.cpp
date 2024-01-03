@@ -29,6 +29,7 @@ Cat::Cat(void)
 }
 
 Cat::Cat(const Cat &copy)
+	:	Animal(copy._type)
 {
 	std::cout << GREEN << "Cat: Copy constructor called" << RESET << std::endl;
 

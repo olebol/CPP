@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2023/12/18 22:40:09 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/03 18:05:15 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ WrongCat::WrongCat(void)
 }
 
 WrongCat::WrongCat(const WrongCat &copy)
+	:	WrongAnimal(copy._type)
 {
 	std::cout << GREEN << "WrongCat: Copy constructor called" << RESET << std::endl;
 

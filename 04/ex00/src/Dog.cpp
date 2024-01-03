@@ -29,6 +29,7 @@ Dog::Dog(void)
 }
 
 Dog::Dog(const Dog &copy)
+	:	Animal(copy._type)
 {
 	std::cout << GREEN << "Dog: Copy constructor called" << RESET << std::endl;
 
