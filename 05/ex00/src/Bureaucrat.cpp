@@ -33,14 +33,7 @@ Bureaucrat::Bureaucrat(const std::string &name, const int grade)
 {
 	std::cout << GREEN << "Bureaucrat: Parametric constructor called" << RESET << std::endl;
 
-	try
-	{
-		this->setGrade(grade);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << RED << e.what() << RESET << std::endl;
-	}
+	this->setGrade(grade);
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy)
@@ -126,24 +119,10 @@ void			Bureaucrat::setGrade(const int grade)
 
 void		Bureaucrat::promote(void)
 {
-	try
-	{
-		this->setGrade(this->getGrade() - 1);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << RED << e.what() << RESET << std::endl;
-	}
+	this->setGrade(this->getGrade() - 1);
 }
 
 void		Bureaucrat::demote(void)
 {
-	try
-	{
-		this->setGrade(this->getGrade() + 1);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << RED << e.what() << RESET << std::endl;
-	}
+	this->setGrade(this->getGrade() + 1);
 }
