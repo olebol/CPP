@@ -18,11 +18,13 @@ endif
 # Includes
 HDR_FILES		:=							\
 					Bureaucrat.hpp			\
+					Form.hpp				\
 
 # Files
 SRC_FILES		:=							\
 					main.cpp				\
 					Bureaucrat.cpp			\
+					Form.cpp				\
 
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))

@@ -6,52 +6,59 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:26:40 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/03 21:38:53 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/04 18:57:35 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Bureaucrat.hpp"
+#include "../include/Form.hpp"
 
 #include <iostream>
-#include <string>
 #include <exception>
+
+#define GREEN "\033[32m"
+#define RED "\033[31m"
+#define RESET "\033[0m"
 
 int main(void)
 {
-	Bureaucrat		bob("Bob", 1);
-	Bureaucrat		jim("Jim", 150);
-
-	std::cout << bob << jim;
-
-	bob.demote();
-	jim.promote();
-
-	std::cout << bob << jim;
-
-	bob.promote();
-	bob.promote();
-	jim.demote();
-	jim.demote();
-
-	std::cout << bob << jim;
-
+	// Test default behaviour
 	try
 	{
-		Bureaucrat		alex("Alex", 0);
+		Bureaucrat		bob("Bob", 75);
+		Form			form("Form with a high grade", 50, 50);
+		Form			form2("Form with a low grade", 100, 100);
+		
+		std::cout << bob << std::endl;
+		std::cout << form << form2 << std::endl;
+
+		bob.signForm(form2);
+		bob.signForm(form);
+
+		std::cout << form << form2 << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << "Exception caught: " << e.what() << RESET << std::endl;
 	}
 
+	// Test GradeTooHighException
 	try
 	{
-		Bureaucrat		alex("Alex", 151);
+		Bureaucrat		bob("Bob", 0);
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << "Exception caught: " << e.what() << RESET << std::endl;
 	}
 
-	return (0);
+	// Test GradeTooLowException
+	try
+	{
+		Bureaucrat		bob("Bob", 151);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << "Exception caught: " << e.what() << RESET << std::endl;
+	}
 }

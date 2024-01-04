@@ -13,8 +13,10 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include "./Bureaucrat.hpp"
 #include <string>
+#include "./Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -24,6 +26,9 @@ class Form
 		const int		_requiredGradeSign;
 		const int		_requiredGradeExec;
 		bool			_signed;
+
+		// Member functions
+		void			checkGrade(const int grade) const;
 
 	public:
 		// Constructors

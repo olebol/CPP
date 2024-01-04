@@ -141,7 +141,7 @@ void			Form::beSigned(const Bureaucrat &bureaucrat)
 //                               Helper functions                             //
 // ************************************************************************** //
 
-static void		checkGrade(const int grade)
+void		Form::checkGrade(const int grade) const
 {
 	if (grade < 1)
 		throw Form::GradeTooHighException();
