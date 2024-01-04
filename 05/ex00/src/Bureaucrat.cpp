@@ -119,10 +119,10 @@ void			Bureaucrat::setGrade(const int grade)
 
 void		Bureaucrat::promote(void)
 {
-	this->setGrade(this->getGrade() - 1);
+	this->setGrade(_grade - 1);
 }
 
 void		Bureaucrat::demote(void)
 {
-	this->setGrade(this->getGrade() + 1);
+	this->setGrade(_grade + 1);
 }
