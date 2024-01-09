@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:26:40 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/04 18:57:35 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/09 19:50:47 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int main(void)
 		Form			form2("Form with a low grade", 100, 100);
 		
 		std::cout << bob << std::endl;
-		std::cout << form << form2 << std::endl;
+		
+		bob.signForm(form);
+		std::cout << form << std::endl;
 
 		bob.signForm(form2);
-		bob.signForm(form);
-
-		std::cout << form << form2 << std::endl;
+		std::cout << form2 << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -61,4 +61,6 @@ int main(void)
 	{
 		std::cout << RED << "Exception caught: " << e.what() << RESET << std::endl;
 	}
+
+	return (0);
 }
