@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/10 19:57:05 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/10 21:06:40 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 #include <string>
-#include "./include/AForm.hpp"
+#include "./AForm.hpp"
 
 class ShrubberyCreationForm : public AForm
 {
