@@ -61,10 +61,12 @@ log:
 
 clean:
 	@ echo "$(RED)$(BOLD)Cleaning $(NICKNAME)...$(RESET)"
+	@ rm -rf *_shrubbery
 	@ rm -rf $(OBJ_DIR)
 
 fclean:
 	@ echo "$(RED)$(BOLD)Fully cleaning $(NICKNAME)...$(RESET)"
+	@ rm -rf *_shrubbery
 	@ rm -rf $(OBJ_DIR)
 	@ rm -rf ${NAME}
 

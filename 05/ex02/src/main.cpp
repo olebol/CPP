@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:26:40 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/10 21:24:18 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/10 21:44:06 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(void)
 	{
 		// AForm			form("Form base class", 50, 50);
 		Bureaucrat					bob("Bob", 75);
-		ShrubberyCreationForm		form;
+		ShrubberyCreationForm		form("trees");
 
 		std::cout << form << std::endl;
 
