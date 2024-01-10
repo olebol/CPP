@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/10 19:52:00 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/10 21:13:22 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ bool			AForm::getSigned(void) const
 void			AForm::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_requiredGradeSign)
-		throw AForm::GradeTooLowException();
+		throw (AForm::GradeTooLowException());
 	else
 		this->_signed = true;
 }
@@ -144,7 +144,7 @@ void			AForm::beSigned(const Bureaucrat &bureaucrat)
 void		AForm::checkGrade(const int grade) const
 {
 	if (grade < 1)
-		throw AForm::GradeTooHighException();
+		throw (AForm::GradeTooHighException());
 	else if (grade > 150)
-		throw AForm::GradeTooLowException();
+		throw (AForm::GradeTooLowException());
 }
