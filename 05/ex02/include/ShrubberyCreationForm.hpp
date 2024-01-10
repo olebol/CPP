@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/10 21:06:40 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/10 21:24:58 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,20 @@
 
 class ShrubberyCreationForm : public AForm
 {
+	private:
+		// Attributes
+		const std::string		_target;
+
 	public:
 		// Constructors
 		ShrubberyCreationForm(void);
+		ShrubberyCreationForm(const std::string &target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &copy);
 		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &rhs);
 		~ShrubberyCreationForm();
 
 		// Member functions
-		void		createTrees(void) const;
+		void		execute(const Bureaucrat &executor) const;
 } ;
 
 #endif
