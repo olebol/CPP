@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/10 21:43:40 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/24 15:16:09 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,33 +82,29 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void	createTrees(std::string const &target)
 {
-	std::string		filename = target + "_shrubbery";
-	std::ofstream	outputFile(filename.c_str());
-
-	if (!outputFile || !outputFile.is_open())
+	try
 	{
-		std::cout << "Error opening file" << std::endl;
-		return ;
+		std::string		filename = target + "_shrubbery";
+		std::ofstream	outputFile(filename.c_str());
+
+		if (!outputFile || !outputFile.is_open())
+			throw std::ios_base::failure("Error: unable to open the file");
+
+		outputFile << TREES;
+
+		outputFile.close();
+		
+		std::cout << "Shrubbery created near target: " << target << std::endl;
 	}
-
-	outputFile << TREES;
-
-	outputFile.close();
-	
-	std::cout << "ASCII trees created" << std::endl;
+	catch (std::exception &e)
+	{
+		std::cout << RED << "Failed to create shrubbery: " << e.what() << RESET << std::endl;
+	}
 }
 
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
-	try
-	{
-		if (executor.getGrade() > this->getRequiredGradeExec())
-			throw (AForm::GradeTooLowException());
-		else
-			createTrees(this->_target);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	AForm::execute(executor);
+
+	createTrees(this->_target);
 }
