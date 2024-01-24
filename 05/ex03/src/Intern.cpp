@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:18:19 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/24 19:14:29 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:19:16 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,21 @@ AForm	*Intern::makeForm(const std::string &formName, const std::string &target)
 {
 	AForm	*form = NULL;
 
+	// Create and fill a dictionary (map) with the form names and the corresponding functions
 	std::map<std::string, AForm *(*)(const std::string &target)> formMap;
 	
 	formMap["shrubbery creation"] = &createShrubberyCreationForm;
 	formMap["robotomy request"] = &createRobotomyRequestForm;
 	formMap["presidential pardon"] = &createPresidentialPardonForm;
 
+	// Check if the form name exists
 	if (formMap.find(formName) == formMap.end())
 	{
 		std::cout << RED << "Intern: Form name not found" << RESET << std::endl;
 		return (NULL);
 	}
 
+	// Call the corresponding function
 	form = formMap[formName](target);
 	std::cout << "Intern creates " << form->getName() << std::endl;
 
