@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:46 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/10 21:13:22 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:54:41 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ const char		*AForm::GradeTooLowException::what() const throw()
 	return ("Grade too low");
 }
 
+const char		*AForm::FormNotSignedException::what() const throw()
+{
+	return ("Form not signed");
+}
+
 // ************************************************************************** //
 //                             Getters - Setters                              //
 // ************************************************************************** //
@@ -146,5 +151,13 @@ void		AForm::checkGrade(const int grade) const
 	if (grade < 1)
 		throw (AForm::GradeTooHighException());
 	else if (grade > 150)
+		throw (AForm::GradeTooLowException());
+}
+
+void		AForm::execute(const Bureaucrat &executor) const
+{
+	if (this->getSigned() == false)
+		throw (AForm::FormNotSignedException());
+	if (executor.getGrade() > this->getRequiredGradeExec())
 		throw (AForm::GradeTooLowException());
 }
