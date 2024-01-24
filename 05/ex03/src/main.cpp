@@ -6,14 +6,12 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:26:40 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/24 15:40:30 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:51:58 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Bureaucrat.hpp"
-#include "../include/ShrubberyCreationForm.hpp"
-#include "../include/RobotomyRequestForm.hpp"
-#include "../include/PresidentialPardonForm.hpp"
+#include "../include/Intern.hpp"
 
 #include <iostream>
 #include <exception>
@@ -22,45 +20,34 @@
 #define RED "\033[31m"
 #define RESET "\033[0m"
 
-void	testForm(Bureaucrat &jim, Bureaucrat &chad, AForm &form)
-{
-	std::cout << "\nTesting form: " << form.getName() << std::endl;
-	try 
-	{
-		// Too low grade to sign or execute
-		jim.signForm(form);
-		jim.executeForm(form);
-
-		// Not signed
-		chad.executeForm(form);
-
-		// Sign and execute
-		chad.signForm(form);
-		chad.executeForm(form);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << RED << "Exception caught: " << e.what() << RESET << std::endl;
-	}
-	std::cout << std::endl;
-}
-
 int	main(void)
 {
 	try
 	{
-		Bureaucrat					jim("Jim", 150);
-		Bureaucrat					chad("Chad", 1);
-		// Bureaucrat					kyle("Kyle", 0);
-		// Bureaucrat					brad("Brad", 151);
+		Bureaucrat		chad("Chad", 1);
+		Intern			intern;
+		AForm			*forms[4];
 
-		ShrubberyCreationForm		shrubbery("house");
-		RobotomyRequestForm			robotomy("human");
-		PresidentialPardonForm		presidential("criminal");
+		forms[0] = intern.makeForm("shrubbery creation", "house");
+		forms[1] = intern.makeForm("robotomy request", "human");
+		forms[2] = intern.makeForm("presidential pardon", "criminal");
+		forms[3] = intern.makeForm("unknown form", "unknown");
 
-		testForm(jim, chad, shrubbery);
-		testForm(jim, chad, robotomy);
-		testForm(jim, chad, presidential);
+		for (int i = 0; i < 4; i++)
+		{
+			if (forms[i] != NULL)
+				std::cout << *forms[i] << std::endl;
+			else
+				std::cout << "Form not found" << std::endl;
+		}
+
+		for (int i = 0; i < 4; i++)
+		{
+			if (forms[i] != NULL)
+			{
+				delete forms[i];
+			}
+		}
 	}
 	catch (std::exception &e)
 	{

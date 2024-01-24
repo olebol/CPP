@@ -22,6 +22,7 @@ HDR_FILES		:=								\
 					ShrubberyCreationForm.hpp	\
 					RobotomyRequestForm.hpp		\
 					PresidentialPardonForm.hpp	\
+					Intern.hpp					\
 
 # Files
 SRC_FILES		:=								\
@@ -31,6 +32,7 @@ SRC_FILES		:=								\
 					ShrubberyCreationForm.cpp	\
 					RobotomyRequestForm.cpp		\
 					PresidentialPardonForm.cpp	\
+					Intern.cpp					\
 
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
