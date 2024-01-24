@@ -20,6 +20,7 @@ HDR_FILES		:=								\
 					Bureaucrat.hpp				\
 					AForm.hpp					\
 					ShrubberyCreationForm.hpp	\
+					RobotomyRequestForm.hpp		\
 
 # Files
 SRC_FILES		:=								\
@@ -27,6 +28,7 @@ SRC_FILES		:=								\
 					Bureaucrat.cpp				\
 					AForm.cpp					\
 					ShrubberyCreationForm.cpp	\
+					RobotomyRequestForm.cpp		\
 
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
