@@ -54,6 +54,7 @@ class Bureaucrat
 		void			promote(void);
 		void			demote(void);
 		void			signForm(AForm &Aform);
+		void			executeForm(const AForm &form) const;
 } ;
 
 // Operator overloads
