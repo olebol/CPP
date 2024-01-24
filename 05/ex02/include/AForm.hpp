@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/24 14:46:58 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:53:09 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class AForm
 		AForm(const std::string &name, const int gradeSign, const int gradeExec);
 		AForm(const AForm &copy);
 		AForm	&operator=(const AForm &rhs);
-		~AForm();
+		virtual ~AForm();
 
 		// Exceptions
 		class GradeTooHighException : public std::exception
