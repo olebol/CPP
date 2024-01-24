@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:18:19 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/24 16:51:26 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:14:29 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "../include/PresidentialPardonForm.hpp"
 
 #include <iostream>
+#include <map>
 
 #define GREEN "\033[32m"
 #define RED "\033[31m"
@@ -63,28 +64,38 @@ Intern::~Intern()
 //                               Public Methods                               //
 // ************************************************************************** //
 
+static AForm	*createShrubberyCreationForm(const std::string &target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+static AForm	*createRobotomyRequestForm(const std::string &target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+static AForm	*createPresidentialPardonForm(const std::string &target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
 AForm	*Intern::makeForm(const std::string &formName, const std::string &target)
 {
 	AForm	*form = NULL;
 
-	if (formName == "shrubbery creation")
+	std::map<std::string, AForm *(*)(const std::string &target)> formMap;
+	
+	formMap["shrubbery creation"] = &createShrubberyCreationForm;
+	formMap["robotomy request"] = &createRobotomyRequestForm;
+	formMap["presidential pardon"] = &createPresidentialPardonForm;
+
+	if (formMap.find(formName) == formMap.end())
 	{
-		form = new ShrubberyCreationForm(target);
-	}
-	else if (formName == "robotomy request")
-	{
-		form = new RobotomyRequestForm(target);
-	}
-	else if (formName == "presidential pardon")
-	{
-		form = new PresidentialPardonForm(target);
-	}
-	else
-	{
-		std::cout << RED << "Intern cannot create form: unknown form name" << RESET << std::endl;
+		std::cout << RED << "Intern: Form name not found" << RESET << std::endl;
 		return (NULL);
 	}
 
+	form = formMap[formName](target);
 	std::cout << "Intern creates " << form->getName() << std::endl;
 
 	return (form);
