@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:08 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/10 19:57:09 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:46:58 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ class AForm
 				const char		*what() const throw();
 		} ;
 		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char		*what() const throw();
+		} ;
+		class FormNotSignedException : public std::exception
 		{
 			public:
 				const char		*what() const throw();
