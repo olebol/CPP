@@ -6,13 +6,15 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:28:02 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/25 19:06:10 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/25 20:51:45 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ScalarConverter.hpp"
 
 #include <iostream>
+#include <cstdlib>
+#include <iomanip>
 
 #define GREEN "33[32m"
 #define RED "33[31m"
@@ -58,10 +60,113 @@ ScalarConverter::~ScalarConverter()
 }
 
 // ************************************************************************** //
+//                               Helper Functions                             //
+// ************************************************************************** //
+
+static void	convertChar(const char c)
+{
+	std::cout << "char: " << c << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+}
+
+static void	convertInt(const std::string &str)
+{
+	int			num = std::atoi(str.c_str());
+
+	// char
+	if (num < 32 || num > 126)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << static_cast<char>(num) << std::endl;
+
+	// int
+	std::cout << "int: " << num << std::endl;
+
+	// double
+	std::cout << "double: " << static_cast<double>(num) << std::endl;
+
+	// float
+	std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
+}
+
+static void	convertFloat(const std::string &str)
+{
+	float		num = std::atof(str.c_str());
+
+	// nanf -inff +inff
+	if (str == "nanf" || str == "-inff" || str == "+inff")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << num << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(num) << std::endl;
+		return ;
+	}
+
+	// char
+	if (num < 32 || num > 126)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << static_cast<char>(num) << std::endl;
+
+	// int
+	std::cout << "int: " << static_cast<int>(num) << std::endl;
+
+	// float
+	std::cout << "float: " << num << "f" << std::endl;
+
+	// double
+	std::cout << "double: " << static_cast<double>(num) << std::endl;
+}
+
+static void	convertDouble(const std::string &str)
+{
+	double		num = std::strtod(str.c_str(), NULL);
+
+	// nan -inf +inf
+	if (str == "nan" || str == "-inf" || str == "+inf")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
+		std::cout << "double: " << num << std::endl;
+		return ;
+	}
+
+	// char
+	if (num < 32 || num > 126)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << static_cast<char>(num) << std::endl;
+
+	// int
+	std::cout << "int: " << static_cast<int>(num) << std::endl;
+
+	// float
+	std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
+
+	// double
+	std::cout << "double: " << num << std::endl;
+}
+
+// ************************************************************************** //
 //                                Public methods                              //
 // ************************************************************************** //
 
-static void		convert(const std::string &str)
+void		ScalarConverter::convert(const std::string &str)
 {
-	(void) str;
+	std::cout << "str: " << str << std::endl;
+
+	// Set precision
+	// std::cout << std::setprecision(10) << std::endl;
+
+	convertChar(str[0]);
+
+	convertInt(str);
+
+	convertFloat(str);
+	
+	convertDouble(str);
 }
