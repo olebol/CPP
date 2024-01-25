@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:31:09 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/25 19:02:22 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/25 20:58:01 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include <string>
 
+enum e_type
+{
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	UNKNOWN
+};
 class ScalarConverter
 {
 	private:
