@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:28:02 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/25 21:30:43 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/25 21:52:40 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ static e_type	getType(const std::string &str)
 		return (CHAR);
 
 	// input edge cases
-	for (size_t i = 0; i < str.length() - 1; i++)
+	for (size_t i = 0; i < str.length(); i++)
 	{
 		if (!std::isdigit(str[i]) && str[i] != '.')
 			return (UNKNOWN);
