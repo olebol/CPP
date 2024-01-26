@@ -39,6 +39,7 @@ ScalarConverter::ScalarConverter(const std::string &str)
 ScalarConverter::ScalarConverter(const ScalarConverter &rhs)
 {
 	std::cout << GREEN << "ScalarConverter: Copy constructor called" << RESET << std::endl;
+
 	*this = rhs;
 }
 
