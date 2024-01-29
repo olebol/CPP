@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   PhoneBook.cpp                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: opelser <opelser@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/08/03 01:00:06 by opelser       #+#    #+#                 */
-/*   Updated: 2023/08/09 21:08:27 by opelser       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/03 01:00:06 by opelser           #+#    #+#             */
+/*   Updated: 2024/01/29 14:40:40 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <stdlib.h>
 #include <iomanip>
 // #include <cctype>
 
@@ -122,7 +123,7 @@ void	PhoneBook::search(void) const
 		getline(std::cin, input);
 		if (input.empty() == false)
 		{
-			index = std::stoi(input);
+			index = std::atoi(input.c_str());
 			break ;
 		}
 	}
