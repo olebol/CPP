@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:28:02 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/29 15:33:20 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:44:37 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
+#include <limits>
 
 #define GREEN "\033[32m"
 #define RED "\033[31m"
@@ -118,9 +119,14 @@ static void	convertFloat(const std::string &str)
 	{
 		num = std::stof(str);
 	}
-	catch (std::exception &e)
+	catch (const std::invalid_argument &e)
 	{
-		std::cout << RED << "Error: " << e.what() << RESET << std::endl;
+		std::cout << RED << "Exception caught: Invalid argument - " << e.what() << RESET << std::endl;
+		return ;
+	}
+	catch (const std::out_of_range &e)
+	{
+		std::cout << RED << "Exception caught: Out of range - " << e.what() << RESET << std::endl;
 		return ;
 	}
 
@@ -159,9 +165,14 @@ static void	convertDouble(const std::string &str)
 	{
 		num = std::stod(str);
 	}
-	catch (std::exception &e)
+	catch (const std::invalid_argument &e)
 	{
-		std::cout << RED << "Error: " << e.what() << RESET << std::endl;
+		std::cout << RED << "Exception caught: Invalid argument - " << e.what() << RESET << std::endl;
+		return ;
+	}
+	catch (const std::out_of_range &e)
+	{
+		std::cout << RED << "Exception caught: Out of range - " << e.what() << RESET << std::endl;
 		return ;
 	}
 
@@ -181,17 +192,19 @@ static void	convertDouble(const std::string &str)
 	else
 		std::cout << "char: " << static_cast<char>(num) << std::endl;
 
-	// int and float
-	if (num > INT32_MAX || num < INT32_MIN)
-	{
+	// int
+	if (num > std::numeric_limits<int>::max() ||
+		num < std::numeric_limits<int>::min())
 		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: impossible" << std::endl;
-	}
 	else
-	{
 		std::cout << "int: " << static_cast<int>(num) << std::endl;
+
+	// float
+	if (num > std::numeric_limits<float>::max() ||
+		num < std::numeric_limits<float>::min())
+		std::cout << "float: impossible" << std::endl;
+	else
 		std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
-	}
 
 	// double
 	std::cout << "double: " << num << std::endl;
