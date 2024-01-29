@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:08:37 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/29 17:08:44 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:23:00 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,12 @@ Serializer::~Serializer()
 //                                Public methods                              //
 // ************************************************************************** //
 
+uintptr_t	Serializer::serialize(Data* ptr)
+{
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
 
+Data		*Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data *>(raw));
+}

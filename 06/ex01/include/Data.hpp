@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:11:23 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/29 17:16:59 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:27:46 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ class Data
 		Data &operator=(const Data &rhs);
 		~Data();
 
-		// Public Methods
-
+		// Getters - Setters
+		std::string		getName(void) const;
+		int				getAge(void) const;
 } ;
 
+// Print Overload
+std::ostream	&operator<<(std::ostream &o, const Data &rhs);
 
 #endif

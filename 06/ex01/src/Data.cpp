@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:15:16 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/29 17:18:55 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:27:37 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,28 @@ Data &Data::operator=(const Data &rhs)
 Data::~Data()
 {
 	std::cout << RED << "Data: Destructor called" << RESET << std::endl;
+}
+
+// ************************************************************************** //
+//                             Getters - Setters                              //
+// ************************************************************************** //
+
+std::string		Data::getName(void) const
+{
+	return (_name);
+}
+
+int				Data::getAge(void) const
+{
+	return (_age);
+}
+
+// ************************************************************************** //
+//	                             Print Overload                               //
+// ************************************************************************** //
+
+std::ostream	&operator<<(std::ostream &o, const Data &rhs)
+{
+	o << "Data: " << rhs.getName() << " " << rhs.getAge();
+	return (o);
 }

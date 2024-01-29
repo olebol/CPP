@@ -6,13 +6,14 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:06:51 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/29 17:14:27 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:30:24 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_HPP
 # define SERIALIZER_HPP
 
+# include <cstdint>
 # include <string>
 
 # include "Data.hpp"
