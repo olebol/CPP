@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:28:02 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/29 15:44:37 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:59:58 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,7 +255,7 @@ static e_type	getType(const std::string &str)
 void		ScalarConverter::convert(const std::string &str)
 {
 	// Set precision
-	std::cout << std::fixed << std::setprecision(1);
+	// std::cout << std::fixed << std::setprecision(100);
 
 	switch (getType(str))
 	{
