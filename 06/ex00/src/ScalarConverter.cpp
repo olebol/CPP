@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:28:02 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/25 21:52:40 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:33:20 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,24 @@ static void	convertChar(const char c)
 
 static void	convertInt(const std::string &str)
 {
-	int			num = std::atoi(str.c_str());
+	int				num;
+
+	// convert string to int
+	try
+	{
+		num = std::stoi(str);
+	}
+	catch (const std::invalid_argument &e)
+	{
+		std::cout << RED << "Exception caught: Invalid argument - " << e.what() << RESET << std::endl;
+		return ;
+	}
+	catch (const std::out_of_range &e)
+	{
+		std::cout << RED << "Exception caught: Out of range - " << e.what() << RESET << std::endl;
+		return ;
+	}
+
 
 	// char
 	if (num < 32 || num > 126)
@@ -94,7 +111,18 @@ static void	convertInt(const std::string &str)
 
 static void	convertFloat(const std::string &str)
 {
-	float		num = std::atof(str.c_str());
+	float		num;
+
+	// convert string to float
+	try
+	{
+		num = std::stof(str);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << "Error: " << e.what() << RESET << std::endl;
+		return ;
+	}
 
 	// nanf -inff +inff
 	if (str == "nanf" || str == "-inff" || str == "+inff")
@@ -124,7 +152,18 @@ static void	convertFloat(const std::string &str)
 
 static void	convertDouble(const std::string &str)
 {
-	double		num = std::strtod(str.c_str(), NULL);
+	double		num;
+
+	// convert string to double
+	try
+	{
+		num = std::stod(str);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << "Error: " << e.what() << RESET << std::endl;
+		return ;
+	}
 
 	// nan -inf +inf
 	if (str == "nan" || str == "-inf" || str == "+inf")
@@ -142,11 +181,17 @@ static void	convertDouble(const std::string &str)
 	else
 		std::cout << "char: " << static_cast<char>(num) << std::endl;
 
-	// int
-	std::cout << "int: " << static_cast<int>(num) << std::endl;
-
-	// float
-	std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
+	// int and float
+	if (num > INT32_MAX || num < INT32_MIN)
+	{
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+	}
+	else
+	{
+		std::cout << "int: " << static_cast<int>(num) << std::endl;
+		std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
+	}
 
 	// double
 	std::cout << "double: " << num << std::endl;
@@ -158,23 +203,32 @@ static e_type	getType(const std::string &str)
 	if (str.length() == 1 && !std::isdigit(str[0]))
 		return (CHAR);
 
+	// pseudo literals
+	if ((str == "nanf" || str == "-inff" || str == "+inff"))
+		return (FLOAT);
+	if ((str == "nan" || str == "-inf" || str == "+inf"))
+		return (DOUBLE);
+
 	// input edge cases
-	for (size_t i = 0; i < str.length(); i++)
+	size_t		len = str.length() - 1;
+	for (size_t i = 0; i < len; i++)
 	{
-		if (!std::isdigit(str[i]) && str[i] != '.')
+		if (std::isdigit(str[i]) == false && str[i] != '.')
 			return (UNKNOWN);
 	}
-	if (str.find("..") != std::string::npos || str[str.length() - 1] == '.')
+	if (str[len] == '.')
+		return (UNKNOWN);
+	if (std::isdigit(str[len]) == false && str[len] != 'f')
+		return (UNKNOWN);
+	if (str.find("..") != std::string::npos)
 		return (UNKNOWN);
 
 	// float
-	if ((str.find('.') != std::string::npos && str.find('f') == str.length() - 1)
-		|| (str == "nanf" || str == "-inff" || str == "+inff"))
+	if (str.find('.') != std::string::npos && str.find('f') == len)
 		return (FLOAT);
 
 	// double
-	if ((str.find('.') != std::string::npos && str.find('f') == std::string::npos)
-		|| (str == "nan" || str == "-inf" || str == "+inf"))
+	if (str.find('.') != std::string::npos && str.find('f') == std::string::npos)
 		return (DOUBLE);
 
 	// int

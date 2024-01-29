@@ -9,7 +9,7 @@ OBJ_DIR			:= obj
 
 # Compiler flags
 CC				:= c++
-CFLAGS			:= -Wall -Werror -Wextra -std=c++98 
+CFLAGS			:= -Wall -Werror -Wextra -std=c++11 
 
 ifdef DEBUG
 	CFLAGS		+= -g -fsanitize=address
