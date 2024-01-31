@@ -18,6 +18,7 @@ endif
 # Includes
 HDR_FILES		:=								\
 					Array.hpp					\
+					Array.tpp					\
 
 # Files
 SRC_FILES		:=								\
@@ -45,7 +46,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o: src/%.cpp $(HDR)
 	@ mkdir -p obj
-	@ $(CC) $(CFLAGS) -c $< -o $@ -I $(HDR_DIR)
+	@ $(CC) $(CFLAGS) -I $(HDR_DIR) -c $< -o $@ 
 
 open: $(NAME)
 	@ ./$(NAME)

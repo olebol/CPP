@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:33:01 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/31 16:41:54 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/31 20:07:20 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,13 @@ class Array
 		Array &operator=(const Array &rhs);
 		~Array();
 
+		// Operator Overload
+		T		&operator[](const unsigned int i) const;
+
 		// Public Methods
 		unsigned int	size(void) const;
 } ;
 
+# include "./Array.tpp"
 
 #endif

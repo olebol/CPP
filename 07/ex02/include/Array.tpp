@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.cpp                                          :+:      :+:    :+:   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:40:43 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/31 16:53:57 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/31 20:19:36 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../include/Array.hpp"
 
 #include <iostream>
 
@@ -24,27 +22,27 @@
 
 template <typename T>
 Array<T>::Array(void)
-	: _size(0), _array(new T[0])
+	: _size(0), _array(new T[0]())
 {
 	std::cout << GREEN << "Array: Default constructor called" << RESET << std::endl;
 }
 
 template <typename T>
 Array<T>::Array(const unsigned int n)
-	:	_size(n), _array(new T[n])
+	:	_size(n), _array(new T[n]())
 {
 	std::cout << GREEN << "Array: Parametric constructor called" << RESET << std::endl;
 }
 
 template <typename T>
-Array<T>::Array(const Array &rhs)
+Array<T>::Array(const Array<T> &rhs)
 {
 	std::cout << GREEN << "Array: Copy constructor called" << RESET << std::endl;
 	*this = rhs;
 }
 
 template <typename T>
-Array<T> &Array<T>::operator=(const Array<T> &rhs)
+Array<T>	&Array<T>::operator=(const Array<T> &rhs)
 {
 	std::cout << GREEN << "Array: Assignment operator called" << RESET << std::endl;
 
@@ -54,7 +52,7 @@ Array<T> &Array<T>::operator=(const Array<T> &rhs)
 		this->_size = rhs._size;
 
 		this->_array = new T[rhs._size];
-		for (int i = 0; i < rhs._size; i++)
+		for (size_t i = 0; i < rhs._size; i++)
 			this->_array[i] = rhs._array[i];
 	}
 
@@ -64,7 +62,21 @@ Array<T> &Array<T>::operator=(const Array<T> &rhs)
 template <typename T>
 Array<T>::~Array()
 {
+	delete[] (this->_array);
+
 	std::cout << RED << "Array: Destructor called" << RESET << std::endl;
+}
+
+// ************************************************************************** //
+//                            Operator Overload                               //
+// ************************************************************************** //
+
+template <typename T>
+T	&Array<T>::operator[](const unsigned int i) const
+{
+	if (i >= this->_size)
+		throw (std::runtime_error("Index out of range"));
+	return (this->_array[i]);
 }
 
 // ************************************************************************** //
