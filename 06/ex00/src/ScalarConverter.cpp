@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:28:02 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/29 15:59:58 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/31 15:43:23 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@
 ScalarConverter::ScalarConverter(void)
 {
 	std::cout << GREEN << "ScalarConverter: Default constructor called" << RESET << std::endl;
-}
-
-ScalarConverter::ScalarConverter(const std::string &str)
-{
-	std::cout << GREEN << "ScalarConverter: Parametric constructor called" << RESET << std::endl;
-
-	(void) str;
 }
 
 ScalarConverter::ScalarConverter(const ScalarConverter &rhs)

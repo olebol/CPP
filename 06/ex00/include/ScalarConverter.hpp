@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:31:09 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/25 20:58:01 by opelser          ###   ########.fr       */
+/*   Updated: 2024/01/31 15:42:58 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class ScalarConverter
 	private:
 		// Constructors
 		ScalarConverter();
-		ScalarConverter(const std::string &str);
 		ScalarConverter(const ScalarConverter &rhs);
 		ScalarConverter &operator=(const ScalarConverter &rhs);
 		~ScalarConverter();
