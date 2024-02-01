@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/01 16:09:21 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/01 17:02:48 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,18 @@
 
 #include "../include/easyfind.hpp"
 
-int main(int ac, char **av)
+int main(void)
 {
-	try
-	{
-		if (ac != 2)
-		{
-			std::cerr << RED << "Usage: " << av[0] << " <value>" << RESET << std::endl;
-			return (1);
-		}
+	std::vector<int>::iterator	iter;
+	std::vector<int>			vec = {1, 2, 3, 4, 5};
+	int							value = 3;
+	
+	iter = easyfind(vec, value);
 
-		int							value = std::stoi(av[1]);
-		std::vector<int>			vec = {1, 2, 3, 4, 5};
-		std::vector<int>::iterator	iter = easyfind(vec, value);
+	if (iter == vec.end())
+		std::cout << RED << "Value [" << value << "] not found in container" << RESET << std::endl;
+	else
+		std::cout << GREEN << "Found value [" << value << "] at container index: " << std::distance(vec.begin(), iter) << RESET << std::endl;
 
-		std::cout << "Found value [" << value << "] at container index: " << std::distance(vec.begin(), iter) << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << RED << "Exception caught: " << e.what() << RESET << std::endl;
-	}
 	return (0);
 }
