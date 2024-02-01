@@ -17,11 +17,13 @@ endif
 
 # Includes
 HDR_FILES		:=								\
+					Span.hpp					\
 
 
 # Files
 SRC_FILES		:=								\
 					main.cpp					\
+					Span.cpp					\
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ				:= ${addprefix ${OBJ_DIR}/, ${SRC_FILES:.cpp=.o}}
