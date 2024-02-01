@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/01 22:06:11 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/01 22:07:41 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ void	testCopy(void)
 
 int main(void)
 {
-	// subject();
+	subject();
 
 	// intDeque();
 
@@ -184,7 +184,7 @@ int main(void)
 
 	// testIterators();
 
-	testCopy();
+	// testCopy();
 
 	return (0);
 }
