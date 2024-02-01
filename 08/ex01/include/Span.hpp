@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 20:35:53 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/01 18:39:49 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/01 18:41:59 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ class Span
 				virtual const char	*what() const noexcept;
 		};
 
+		class			SpanNotPossibleException : public std::exception
+		{
+			public:
+				virtual const char	*what() const noexcept;
+		};	
+
 		// Getters and Setters
 		int				getNumber(const unsigned int n) const;
 		
@@ -51,7 +57,8 @@ class Span
 		void			addNumber(const int n);
 		void			addRange(const int size);
 
-		
+		int				shortestSpan(void) const;
+		int				longestSpan(void) const;
 } ;
 
 

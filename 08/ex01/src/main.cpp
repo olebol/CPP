@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/01 18:37:16 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/01 19:52:15 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,29 @@
 #define RED "\033[31m"
 #define RESET "\033[0m"
 
+#define SPANSIZE 10000
+
 #include "../include/Span.hpp"
 
 int main(void)
 {
 	try
 	{
-		Span		span(5);
+		Span		span(SPANSIZE);
 
 		// Add numbers to the array
-		span.addRange(5);
+		span.addRange(SPANSIZE);
 
-		for (int i = 0; i < 5; i++)
-			std::cout << span.getNumber(i) << std::endl;
+		for (int i = 0; i < SPANSIZE; i++)
+			std::cout << span.getNumber(i) << "\t-\t";
+
+		std::cout << std::endl << std::endl;
+
+		std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << span.longestSpan() << std::endl;
 
 		// Try to add a number to a full array
-		span.addNumber(6);
+		// span.addNumber(6);
 	}
 	catch (std::exception &e)
 	{
