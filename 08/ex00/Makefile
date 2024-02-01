@@ -1,5 +1,5 @@
 NAME			:= ex00
-NICKNAME		:= EX00 - Span
+NICKNAME		:= EX00 - Easy Find
 
 # Directories
 HDR_DIR			:= include

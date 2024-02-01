@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 20:35:53 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/31 20:36:07 by opelser          ###   ########.fr       */
+/*   Created: 2024/02/01 14:45:54 by opelser           #+#    #+#             */
+/*   Updated: 2024/02/01 16:20:43 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-# define SPAN_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 # include <string>
 
-class Span
+# include <iterator>
+# include <algorithm>
+
+template <typename T>
+typename T::iterator		easyfind(T &container, int value)
 {
-	private:
-		// Private Attributes
-		
+	typename T::iterator	iter;
 
-	public:
-		// Constructors
-		Span();
-		Span(const Span &rhs);
-		Span &operator=(const Span &rhs);
-		~Span();
+	iter = std::find(container.begin(), container.end(), value);
 
-		// Public Methods
-
-} ;
-
+	if (iter == container.end())
+		throw (std::runtime_error("Value not found in container"));
+	
+	return (iter);
+}
 
 #endif
