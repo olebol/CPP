@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:18:19 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/24 19:19:16 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:16:57 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ AForm	*Intern::makeForm(const std::string &formName, const std::string &target)
 	AForm	*form = NULL;
 
 	// Create and fill a dictionary (map) with the form names and the corresponding functions
-	std::map<std::string, AForm *(*)(const std::string &target)> formMap;
+	typedef		AForm *(*formCreatorFunction)(const std::string &target);
+	std::map<std::string, formCreatorFunction> formMap;
 	
 	formMap["shrubbery creation"] = &createShrubberyCreationForm;
 	formMap["robotomy request"] = &createRobotomyRequestForm;
