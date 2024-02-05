@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/05 20:07:06 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:18:51 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 #include "BitcoinExchange.hpp"
 #include <fstream>
-
-
 
 static void
 exchangeLine(const std::string &line, const BitcoinExchange &exchange)
@@ -42,7 +40,6 @@ exchangeLine(const std::string &line, const BitcoinExchange &exchange)
 		std::cout << RED << "Exception caught during exchanging: " << e.what() << RESET << std::endl;
 	}
 }
-
 
 static void
 exchangeAll(const std::string &filename, const BitcoinExchange &exchange)
