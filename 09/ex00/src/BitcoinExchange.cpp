@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:51 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/05 20:13:33 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/05 21:06:56 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,15 @@ parseLine(const std::string &line, BitcoinExchange &exchange)
 	}
 	catch (const std::invalid_argument &e)
 	{
-		std::cout << RED << "Exception caught: Invalid argument for function - " << e.what() << RESET << std::endl;
+		std::cerr << RED << "Exception caught: Invalid argument for function - " << e.what() << RESET << std::endl;
 	}
 	catch (const std::out_of_range &e)
 	{
-		std::cout << RED << "Exception caught: Rate is out of range for function - " << e.what() << RESET << std::endl;
+		std::cerr << RED << "Exception caught: Rate is out of range for function - " << e.what() << RESET << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cout << RED << e.what() << RESET << std::endl;
+		std::cerr << RED << e.what() << RESET << std::endl;
 	}
 }
 
@@ -125,7 +125,7 @@ BitcoinExchange::parseData(std::string &filename)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << RED << "Exception caught: " << e.what() << RESET << std::endl;
+		std::cerr << RED << "Exception caught: " << e.what() << RESET << std::endl;
 	}
 }
 

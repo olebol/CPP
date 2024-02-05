@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/05 20:18:51 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/05 21:07:42 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ exchangeLine(const std::string &line, const BitcoinExchange &exchange)
 	}
 	catch (const std::invalid_argument &e)
 	{
-		std::cout << RED << "Exception caught during exchanging: Invalid argument for function - " << e.what() << RESET << std::endl;
+		std::cerr << RED << "Exception caught during exchanging: Invalid argument for function - " << e.what() << RESET << std::endl;
 	}
 	catch (const std::out_of_range &e)
 	{
-		std::cout << RED << "Exception caught during exchanging: Rate is out of range for function - " << e.what() << RESET << std::endl;
+		std::cerr << RED << "Exception caught during exchanging: Rate is out of range for function - " << e.what() << RESET << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cout << RED << "Exception caught during exchanging: " << e.what() << RESET << std::endl;
+		std::cerr << RED << "Exception caught during exchanging: " << e.what() << RESET << std::endl;
 	}
 }
 
