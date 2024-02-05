@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:11 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/02 17:44:38 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/05 18:39:13 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <string>
 
 # include <map>
+
+# define GREEN "\033[32m"
+# define RED "\033[31m"
+# define RESET "\033[0m"
 
 class BitcoinExchange
 {
@@ -31,24 +35,42 @@ class BitcoinExchange
 		BitcoinExchange &operator=(const BitcoinExchange &rhs);
 		~BitcoinExchange(void);
 
-		// Exceptions
-		class NoRateAvailable : public std::exception
+		class InvalidDate : public std::exception
 		{
 			public:
 				virtual const char *what() const noexcept
 				{
-					return ("No rate available for this date");
+					return ("Entered date is invalid");
 				}
 		};
 
-		class invalidValue : public std::exception
+		class InvalidValue : public std::exception
 		{
 			public:
 				virtual const char *what() const noexcept
 				{
-					return ("Entered value is not between 0 and 1000");
+					return ("Entered value is invalid");
 				}
 		};
+
+		class NegativeValue : public std::exception
+		{
+			public:
+				virtual const char *what() const noexcept
+				{
+					return ("Entered value is negative");
+				}
+		};
+
+		class ValueTooHigh : public std::exception
+		{
+			public:
+				virtual const char *what() const noexcept
+				{
+					return ("Entered value is too high");
+				}
+		};
+
 
 		// Adding rates
 		void		addRate(std::string date, double rate);

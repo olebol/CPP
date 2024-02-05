@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:51 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/02 18:07:41 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/05 18:40:16 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 #include <iostream>
 #include <fstream>
-
-#define GREEN "\033[32m"
-#define RED "\033[31m"
-#define RESET "\033[0m"
 
 // ************************************************************************** //
 //                        Constructors and Destructors                        //
@@ -83,13 +79,17 @@ BitcoinExchange::parseData(std::string &filename)
 		std::string		line;
 		std::ifstream	file(filename);
 
-		if (file.good() == false || file.is_open() == false)
+		if (file.fail() == true || file.is_open() == false)
 			throw (std::ifstream::failure("Error: could not open file"));
 
-		do
+		// Skip the first line
+		std::getline(file, line);
+
+		// Read the file
+		while (std::getline(file, line))
 		{
-			// Read the file
-			std::getline(file, line);
+			if (file.fail() == true && line.empty() == true)
+				break ;
 
 			// Parse the line
 			std::string		date = line.substr(0, line.find(','));
@@ -97,8 +97,10 @@ BitcoinExchange::parseData(std::string &filename)
 
 			// Add the rates to the map
 			addRate(date, rate);
+
+			// Get the next line
+			std::getline(file, line);
 		}
-		while (file.good() == true);
 
 		// Close the file
 		file.close();		
@@ -127,26 +129,25 @@ BitcoinExchange::getRate(std::string &date) const
 	// Find the rate for the given date
 	std::map<std::string, double>::const_iterator		it;
 	
-	it = _exchangeRates.find(date);
+	it = this->_exchangeRates.find(date);
 
-	if (it != _exchangeRates.end())
+	if (it != this->_exchangeRates.end())
 		return (it->second);
 	else
-		throw (BitcoinExchange::NoRateAvailable());
-
-	return (0);
+		return (this->_exchangeRates.lower_bound(date)->second);
 }
 
 double
 BitcoinExchange::exchange(std::string &date, double amount) const
 {
+	// Check if the amount is valid
+	if (amount < 0)
+		throw (BitcoinExchange::NegativeValue());
+	if (amount > 1000)
+		throw (BitcoinExchange::ValueTooHigh());
+
 	// Exchange the given amount for the given date
-	double	rate = getRate(date);
-
-	if (amount < 0 || amount > 1000)
-		throw (BitcoinExchange::invalidValue());
-
-	return (amount * rate);
+	return (amount * getRate(date));
 }
 
 

@@ -50,7 +50,7 @@ $(OBJ_DIR)/%.o: src/%.cpp $(HDR)
 	@ $(CC) $(CFLAGS) -c $< -o $@ -I $(HDR_DIR)
 
 open: $(NAME)
-	@ ./$(NAME)
+	@ ./$(NAME) input.txt
 
 clean:
 	@ echo "$(RED)$(BOLD)Cleaning $(NICKNAME)...$(RESET)"
