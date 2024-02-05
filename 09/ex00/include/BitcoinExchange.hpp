@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:11 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/05 18:39:13 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:04:44 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ class BitcoinExchange
 		// Public Methods
 		double		getRate(std::string &date) const;
 		double		exchange(std::string &date, double amount) const;
+
+		// Static Methods
+		static std::string		convertToDate(const std::string &input);
+		static double			convertToRate(const std::string &input, const size_t start);
 } ;
 
 

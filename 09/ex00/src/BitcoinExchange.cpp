@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:51 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/05 18:40:16 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:13:33 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,41 +69,17 @@ BitcoinExchange::addRate(std::string date, double rate)
 	_exchangeRates[date] = rate;
 }
 
-void
-BitcoinExchange::parseData(std::string &filename)
+static void
+parseLine(const std::string &line, BitcoinExchange &exchange)
 {
-	// Parse the file and add the rates to the map
+	// Parse the line
 	try
 	{
-		// Open the file
-		std::string		line;
-		std::ifstream	file(filename);
+		std::string		date = BitcoinExchange::convertToDate(line);
+		double			rate = BitcoinExchange::convertToRate(line, line.find_first_of(',') + 1);
 
-		if (file.fail() == true || file.is_open() == false)
-			throw (std::ifstream::failure("Error: could not open file"));
-
-		// Skip the first line
-		std::getline(file, line);
-
-		// Read the file
-		while (std::getline(file, line))
-		{
-			if (file.fail() == true && line.empty() == true)
-				break ;
-
-			// Parse the line
-			std::string		date = line.substr(0, line.find(','));
-			double			rate = std::stod(line.substr(line.find(',') + 1));
-
-			// Add the rates to the map
-			addRate(date, rate);
-
-			// Get the next line
-			std::getline(file, line);
-		}
-
-		// Close the file
-		file.close();		
+		// Add the rates to the map
+		exchange.addRate(date, rate);
 	}
 	catch (const std::invalid_argument &e)
 	{
@@ -116,6 +92,40 @@ BitcoinExchange::parseData(std::string &filename)
 	catch (std::exception &e)
 	{
 		std::cout << RED << e.what() << RESET << std::endl;
+	}
+}
+
+void
+BitcoinExchange::parseData(std::string &filename)
+{
+	// Parse the file and add the rates to the map
+	try
+	{
+		// Open the file
+		std::ifstream	file(filename);
+		std::string		line;
+
+		if (file.good() == false || file.is_open() == false)
+			throw (std::ifstream::failure("Could not open file"));
+
+		// Skip the first line
+		std::getline(file, line);
+
+		// Read the file
+		while (std::getline(file, line))
+		{
+			if (file.fail() == true)
+				break ;
+
+			parseLine(line, *this);
+		}
+
+		// Close the file
+		file.close();
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << "Exception caught: " << e.what() << RESET << std::endl;
 	}
 }
 
@@ -150,4 +160,65 @@ BitcoinExchange::exchange(std::string &date, double amount) const
 	return (amount * getRate(date));
 }
 
+// ************************************************************************** //
+//                               Static Functions                             //
+// ************************************************************************** //
 
+std::string
+BitcoinExchange::convertToDate(const std::string &input)
+{
+	if (input.size() < 10)
+		throw (BitcoinExchange::InvalidDate());
+
+	// Get the date
+	std::string		date = input.substr(0, 10);
+
+	if (date.size() != 10)
+		throw (BitcoinExchange::InvalidDate());
+
+	// Check the date format
+	for (int i = 0; date[i]; i++)
+	{
+		if (i == 4 || i == 7)
+		{
+			if (date[i] != '-')
+				throw (BitcoinExchange::InvalidDate());
+		}
+		else if (date[i] < '0' || date[i] > '9')
+			throw (BitcoinExchange::InvalidDate());
+	}
+
+	// Check date limits
+	try
+	{
+		int		year = std::stoi(date.substr(0, 4));
+		int		month = std::stoi(date.substr(5, 2));
+		int		day	= std::stoi(date.substr(8, 2));
+
+		if ((year < 2009 || year > 2023) ||
+			(month < 1 || month > 12) ||
+			(day < 1 || day > 31))
+			throw (BitcoinExchange::InvalidDate());
+	}
+	catch (std::exception &e)
+	{
+		throw (BitcoinExchange::InvalidDate());
+	}
+
+	return (date);
+}
+
+double
+BitcoinExchange::convertToRate(const std::string &input, const size_t start)
+{
+	if (input.size() < start)
+		throw (BitcoinExchange::InvalidValue());
+
+	// Get the rate
+	std::string		rate = input.substr(start);
+
+	if (rate.empty() == true)
+		throw (BitcoinExchange::InvalidValue());
+
+	return (std::stod(rate));
+}
