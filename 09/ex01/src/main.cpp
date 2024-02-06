@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/06 15:51:24 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:51:51 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "../include/RPN.hpp"
 
 int
-main(int ax, char **av)
+main(int ac, char **av)
 {
-	if (ax == 1)
+	if (ac == 1)
 	{
 		std::cout << "Usage: " << av[0] << " <string>" << std::endl;
 		return (1);
