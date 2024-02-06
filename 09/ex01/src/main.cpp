@@ -6,15 +6,36 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/01/31 15:36:53 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:43:59 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-int main(void)
+#include "../include/RPN.hpp"
+
+int
+main(int ax, char **av)
 {
-	std::cout << "Hello World!" << std::endl;
-	
+	if (ax == 1)
+	{
+		std::cout << "Usage: " << av[0] << " <string>" << std::endl;
+		return (1);
+	}
+
+	try
+	{
+		std::string input = av[1];
+		std::cout << "Input: " << input << std::endl;
+
+		RPN		rpn;
+
+		rpn.processInput(input);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << RED << "Exception caught: " << e.what() << RESET << std::endl;
+	}
+
 	return (0);
 }

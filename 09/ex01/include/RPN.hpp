@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:25:03 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/01 22:26:51 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:43:16 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,76 @@
 # define RPN_HPP
 
 # include <string>
+# include <stack> 
 
+#define GREEN "\033[32m"
+#define RED "\033[31m"
+#define RESET "\033[0m"
+
+class RPN
+{
+	private:
+		// Private Attributes
+		std::stack<int>		_stack;
+
+	public:
+		// Constructors and Destructors
+		RPN(void);
+		RPN(const RPN &rhs);
+		RPN &operator=(const RPN &rhs);
+		~RPN(void);
+
+		// Public Methods
+		void	addValueToStack(int toAdd);
+		void	processInput(std::string input);
+		void	performOperation(char op);
+
+		// Exceptions
+		class EmptyStackException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Stack is empty");
+				}
+		};
+
+		class NotEnoughValuesException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Not enough values in stack");
+				}
+		};
+
+		class InvalidValueException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Invalid value");
+				}
+		};
+
+		class InvalidOperationException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Invalid operation");
+				}
+		};
+
+		class CalculationNotPossible : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Calculation not possible");
+				}
+		};
+} ;
 
 
 #endif
