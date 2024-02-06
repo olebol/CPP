@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/06 15:43:59 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:51:24 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ main(int ax, char **av)
 
 	try
 	{
-		std::string input = av[1];
-		std::cout << "Input: " << input << std::endl;
-
-		RPN		rpn;
+		std::string		input = av[1];
+		RPN				rpn;
 
 		rpn.processInput(input);
 	}
