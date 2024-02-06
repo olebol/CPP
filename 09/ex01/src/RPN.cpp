@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:26:23 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/06 15:49:50 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/06 16:46:40 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 // ************************************************************************** //
 
 RPN::RPN(void)
-	:	_stack()
 {
 	std::cout << GREEN << "RPN: Default constructor called" << RESET << std::endl;
 }
@@ -39,7 +38,6 @@ RPN::operator=(const RPN &rhs)
 	if (this != &rhs)
 	{
 		// Perform deep copy
-		this->_stack = rhs._stack;
 	}
 
 	return (*this);
@@ -54,70 +52,67 @@ RPN::~RPN(void)
 //                                Public methods                              //
 // ************************************************************************** //
 
+// Does not work with minus sign, should it?
 void
-RPN::addValueToStack(int toAdd)
+RPN::calculate(std::string &input)
 {
-	this->_stack.push(toAdd);
-}
+	std::stack<int>		stack;
 
-void
-RPN::processInput(std::string input)
-{
 	for (size_t i = 0; i < input.size(); i++)
 	{
 		// Skip spaces
 		if (input[i] == ' ')
 			continue;
-		
+
+		// Check if it's valid input
+		if (input[i + 1] != ' ' && input[i + 1] != '\0')
+			throw (RPN::InvalidValueException());
+
 		// Check if character is a digit or an operator
-		if (std::isdigit(input[i]))
-		{
-			if (std::isdigit(input[i + 1]))
-				throw (RPN::InvalidValueException());
-			else
-				this->addValueToStack(input[i] - '0');
-		}
+		else if (std::isdigit(input[i]))
+			stack.push(input[i] - '0');
+
 		else
-			this->performOperation(input[i]);
+			RPN::performOperation(stack, input[i]);
 	}
 
-	if (this->_stack.size() != 1)
+	if (stack.size() != 1)
 		throw (RPN::CalculationNotPossible());
 	
-	std::cout << "Result: " << this->_stack.top() << std::endl;
+	std::cout << "Result: " << stack.top() << std::endl;
 
-	this->_stack.pop();
+	stack.pop();
 }
 
 void
-RPN::performOperation(char operatorChar)
+RPN::performOperation(std::stack<int> &stack, char operatorChar)
 {
-	if (this->_stack.empty())
+	if (stack.empty())
 		throw (RPN::EmptyStackException());
-	if (this->_stack.size() < 2)
+	if (stack.size() < 2)
 		throw (RPN::NotEnoughValuesException());
 
 	// Get top value and remove it from stack
-	int		topValue = this->_stack.top();
-	this->_stack.pop();
+	int		topValue = stack.top();
+	stack.pop();
 
 	//	Perform operation on top value
 	switch (operatorChar)
 	{
 		case ('+'):
-			this->_stack.top() += topValue;
+			stack.top() += topValue;
 			break;
 
 		case ('-'):
-			this->_stack.top() -= topValue;
+			stack.top() -= topValue;
 			break;
 
 		case ('*'):
-			this->_stack.top() *= topValue;
+			stack.top() *= topValue;
 			break;
 
 		case ('/'):
-			this->_stack.top() /= topValue;
+			stack.top() /= topValue;
 			break;
 
 		default:

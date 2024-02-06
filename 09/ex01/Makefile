@@ -52,6 +52,37 @@ $(OBJ_DIR)/%.o: src/%.cpp $(HDR)
 open: $(NAME)
 	@ ./$(NAME)
 
+test: $(NAME)
+	./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
+	@ echo
+
+	./$(NAME) "7 7 * 7 -"
+	@ echo
+
+	./$(NAME) "1 2 + 3 4 + *"
+	@ echo
+
+	./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
+	@ echo
+
+	./$(NAME) "1"
+	@ echo
+
+	./$(NAME) "(1 + 1)"
+	@ echo
+
+	./$(NAME) "1 2"
+	@ echo
+
+	./$(NAME) "12 2 +"
+	@ echo
+
+	./$(NAME) "1 + 2"
+	@ echo
+
+	./$(NAME) "+"
+	@ echo
+
 clean:
 	@ echo "$(RED)$(BOLD)Cleaning $(NICKNAME)...$(RESET)"
 	@ rm -rf $(OBJ_DIR)
@@ -63,4 +94,4 @@ fclean:
 
 re: fclean ${NAME}
 
-.PHONY: all norminette clean fclean re
+.PHONY: all test clean fclean re
