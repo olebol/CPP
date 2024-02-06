@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:26:23 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/06 17:06:17 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/06 19:53:59 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,29 @@ performOperation(std::stack<int> &stack, char operatorChar)
 	}
 }
 
-// Does not work with minus sign, should it?
+static void
+handleCurrentPart(std::stack<int> &stack, std::string &input)
+{
+	if (input.empty() || input.size() > 2)
+		throw (RPN::InvalidValueException());
+
+	else if (input.size() == 2)
+	{
+		if (input[0] == '-' && std::isdigit(input[1]))
+			stack.push(std::stoi(input));
+		else
+			throw (RPN::InvalidValueException());
+	}
+
+	else if (input.size() == 1)
+	{
+		if (std::isdigit(input[0]))
+			stack.push(input[0] - '0');
+		else
+			performOperation(stack, input[0]);
+	}
+}
+
 void
 RPN::calculate(std::string &input)
 {
@@ -59,25 +81,28 @@ RPN::calculate(std::string &input)
 
 	for (size_t i = 0; i < input.size(); i++)
 	{
-		// Skip spaces
+		// Get current part of input
 		if (input[i] == ' ')
 			continue;
 
-		// Check if it's valid input
-		if (input[i + 1] != ' ' && input[i + 1] != '\0')
-			throw (RPN::InvalidValueException());
+		std::string		currentPart = input.substr(i, input.find(' ', i) - i);
 
-		// Check if character is a digit or an operator
-		else if (std::isdigit(input[i]))
-			stack.push(input[i] - '0');
+		i += currentPart.size();
 
-		else
-			performOperation(stack, input[i]);
+		try
+		{
+			handleCurrentPart(stack, currentPart);
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << RED << "\"" << currentPart << "\": " << e.what() << RESET << std::endl;
+			throw (RPN::CalculationNotPossible());
+		}
 	}
 
 	if (stack.size() != 1)
 		throw (RPN::CalculationNotPossible());
-	
+
 	std::cout << "Result: " << stack.top() << std::endl;
 
 	stack.pop();

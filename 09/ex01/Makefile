@@ -68,6 +68,18 @@ test: $(NAME)
 	./$(NAME) "1"
 	@ echo
 
+	./$(NAME) "1 2 3 4 5 6 7 8 9 1 + + + + + + + + +"
+	@ echo
+
+	./$(NAME) "     -1     "
+	@ echo
+
+	./$(NAME) "8 -9 * 9 - -9 - 9 - -4 - 1 +"
+	@ echo
+
+	./$(NAME) "1 2 3 4 5 6 7 8 9 10"
+	@ echo
+
 	./$(NAME) "(1 + 1)"
 	@ echo
 
@@ -81,6 +93,12 @@ test: $(NAME)
 	@ echo
 
 	./$(NAME) "+"
+	@ echo
+
+	./$(NAME) ""
+	@ echo
+
+	./$(NAME)
 	@ echo
 
 clean:
