@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:25:03 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/06 16:30:51 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/06 17:03:24 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,10 @@
 #define RED "\033[31m"
 #define RESET "\033[0m"
 
-class RPN
+namespace RPN
 {
-	private:
-		// Constructors and Destructors
-		RPN(void);
-		RPN(const RPN &rhs);
-		RPN &operator=(const RPN &rhs);
-		~RPN(void);
-
-	public:
-		// Public Methods
-		static void		calculate(std::string &input);
-		static void		performOperation(std::stack<int> &stack, char op);
+		// Function prototypes
+		void		calculate(std::string &input);
 
 		// Exceptions
 		class EmptyStackException : public std::exception
