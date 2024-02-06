@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:25:03 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/06 17:03:24 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/06 17:07:04 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 namespace RPN
 {
 		// Function prototypes
+
+		// Calculate the result of the input string formatted in the Reverse Polish Notation
 		void		calculate(std::string &input);
 
 		// Exceptions

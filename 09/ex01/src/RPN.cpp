@@ -6,17 +6,13 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:26:23 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/06 17:04:02 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/06 17:06:17 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/RPN.hpp"
 
 #include <iostream>
-
-// ************************************************************************** //
-//                                Public methods                              //
-// ************************************************************************** //
 
 static void
 performOperation(std::stack<int> &stack, char operatorChar)
