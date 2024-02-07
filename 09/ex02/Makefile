@@ -18,12 +18,14 @@ endif
 # Includes
 HDR_FILES		:=								\
 					PmergeMe.hpp				\
+					StopWatch.hpp				\
 
 
 # Files
 SRC_FILES		:=								\
 					main.cpp					\
 					PmergeMe.cpp				\
+					StopWatch.cpp				\
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ				:= ${addprefix ${OBJ_DIR}/, ${SRC_FILES:.cpp=.o}}
@@ -50,7 +52,7 @@ $(OBJ_DIR)/%.o: src/%.cpp $(HDR)
 	@ $(CC) $(CFLAGS) -c $< -o $@ -I $(HDR_DIR)
 
 open: $(NAME)
-	@ ./$(NAME)
+	@ ./$(NAME) 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4
 
 clean:
 	@ echo "$(RED)$(BOLD)Cleaning $(NICKNAME)...$(RESET)"
@@ -63,4 +65,4 @@ fclean:
 
 re: fclean ${NAME}
 
-.PHONY: all norminette clean fclean re
+.PHONY: all clean fclean re
