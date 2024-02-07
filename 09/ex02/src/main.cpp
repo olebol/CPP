@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/07 16:16:54 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/07 16:26:33 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,34 +58,40 @@ main(int ac, char **av)
 
 	try
 	{
-		std::vector<int>	vec(ac - 1);
-		std::list<int>		lst(ac - 1);
 		StopWatch			stopwatch;
-		time_t 				vecElapsed, lstElapsed;
-
-		fillContainer<std::vector<int>>(vec, ac, av);
-		fillContainer<std::list<int>>(lst, ac, av);
-
-		std::cout << "Before: ";
-		printContainer<std::vector<int>>(vec);
 
 		// Sort vec (should be done with merge-insertion sort algorithm)
-		stopwatch.start();
-		std::sort(vec.begin(), vec.end());
-		stopwatch.stop();
-		vecElapsed = stopwatch.getElapsed();
+		{
+			std::vector<int>	vec(ac - 1);
 
-		stopwatch.start();
-		lst.sort();
-		stopwatch.stop();
-		lstElapsed = stopwatch.getElapsed();
+			fillContainer<std::vector<int>>(vec, ac, av);
 
-		std::cout << "After: ";
-		printContainer<std::vector<int>>(vec);
-		std::cout << std::endl;
+			std::cout << "Before: ";
+			printContainer<std::vector<int>>(vec);
 
-		std::cout << "Elapsed time for std::vector<int>:\t" << vecElapsed << " microseconds" << std::endl;
-		std::cout << "Elapsed time for std::list<int>:\t" << lstElapsed << " microseconds" << std::endl;
+			stopwatch.start();
+			std::sort(vec.begin(), vec.end());				// use merge-insertion sort algorithm
+			stopwatch.stop();
+
+			std::cout << "After: ";
+			printContainer<std::vector<int>>(vec);
+			std::cout << std::endl;
+
+			std::cout << "Elapsed time for std::vector<int>:\t" << stopwatch.getElapsed() << " microseconds" << std::endl;
+		}
+
+		// Sort lst (should be done with merge-insertion sort algorithm)
+		{
+			std::list<int>		lst(ac - 1);
+
+			fillContainer<std::list<int>>(lst, ac, av);
+
+			stopwatch.start();
+			lst.sort();										// use merge-insertion sort algorithm
+			stopwatch.stop();
+
+			std::cout << "Elapsed time for std::list<int>:\t" << stopwatch.getElapsed() << " microseconds" << std::endl;
+		}
 	}
 	catch (std::exception &e)
 	{
