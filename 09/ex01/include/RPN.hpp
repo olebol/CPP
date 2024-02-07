@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:25:03 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/06 19:48:49 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/07 16:40:27 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,15 @@ namespace RPN
 			virtual const char *what() const throw()
 			{
 				return ("Calculation not possible");
+			}
+	};
+
+	class DivideByZeroException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw()
+			{
+				return ("Divide by zero");
 			}
 	};
 } ;
