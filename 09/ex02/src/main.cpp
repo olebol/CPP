@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/07 16:12:07 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/07 16:16:54 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ main(int ac, char **av)
 		std::vector<int>	vec(ac - 1);
 		std::list<int>		lst(ac - 1);
 		StopWatch			stopwatch;
-		long long 			vecElapsed, lstElapsed;
+		time_t 				vecElapsed, lstElapsed;
 
 		fillContainer<std::vector<int>>(vec, ac, av);
 		fillContainer<std::list<int>>(lst, ac, av);

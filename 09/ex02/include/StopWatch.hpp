@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:24:37 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/07 15:44:45 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/07 16:16:40 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ class StopWatch
 {
 	private:
 		// Private Attributes
-		long long		_start;
-		long long		_elapsed;
+		time_t		_start;
+		time_t		_elapsed;
 		
 	public:
 		// Constructors and Destructors
@@ -31,7 +31,7 @@ class StopWatch
 		~StopWatch(void);
 
 		// Getters
-		long long		getElapsed(void) const;
+		time_t		getElapsed(void) const;
 
 		// Public Methods
 		void		start(void);

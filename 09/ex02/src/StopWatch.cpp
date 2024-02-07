@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:26:15 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/07 15:46:42 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/07 16:16:29 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ StopWatch::~StopWatch(void)
 //                                Getters                                     //
 // ************************************************************************** //
 
-long long
+time_t
 StopWatch::getElapsed(void) const
 {
 	return (this->_elapsed);
@@ -69,7 +69,7 @@ StopWatch::getElapsed(void) const
 //                                Public methods                              //
 // ************************************************************************** //
 
-static long long
+static time_t
 timeInMicroseconds(std::chrono::high_resolution_clock::time_point time)
 {
 	return (std::chrono::duration_cast<std::chrono::microseconds>(time.time_since_epoch()).count());
