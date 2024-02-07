@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/07 16:27:54 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/07 16:29:25 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ main(int ac, char **av)
 	catch (std::exception &e)
 	{
 		std::cout << RED << "Exception caught: " << e.what() << RESET << std::endl;
+		return (1);
 	}
 
 	return (0);
