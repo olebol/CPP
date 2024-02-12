@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:27:24 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/12 20:03:40 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/12 20:04:48 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ namespace PmergeMe
 	void
 	sort(Container &container, Iterator begin, Iterator end)
 	{
-		// If the container is empty, break the recursion
+		// If the current sub-container is empty, break the recursion
 		if (std::distance(begin, end) <= 0)
 			return ;
 
