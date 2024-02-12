@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:27:24 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/12 19:49:24 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/12 19:54:41 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,8 @@ namespace PmergeMe
 			begin++;
 		}
 
-		while (leftIt != left.end())
-		{
-			*begin = *leftIt;
-			leftIt++;
-			begin++;
-		}
-
-		while (rightIt != right.end())
-		{
-			*begin = *rightIt;
-			rightIt++;
-			begin++;
-		}
+		std::copy(leftIt, left.end(), begin);
+		std::copy(rightIt, right.end(), begin);
 	}
 
 	template <class Container, typename Iterator>
@@ -90,9 +79,7 @@ namespace PmergeMe
 			return ;
 
 		// Get the middle of the container
-		Iterator		mid = begin;
-
-		std::advance(mid, std::distance(begin, end) / 2);
+		Iterator		mid = std::next(begin, std::distance(begin, end) / 2);
 
 		// Recursively sort the left and right halves
 		PmergeMe::sort(container, begin, mid);
