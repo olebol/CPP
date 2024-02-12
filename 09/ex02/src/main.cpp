@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/07 16:30:13 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/12 18:35:21 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,17 @@ main(int ac, char **av)
 		{
 			std::vector<int>	vec(ac - 1);
 
-			fillContainer<std::vector<int>>(vec, ac, av);
+			fillContainer(vec, ac, av);
 
 			std::cout << "Before: ";
-			printContainer<std::vector<int>>(vec);
+			printContainer(vec);
 
 			stopwatch.start();
-			std::sort(vec.begin(), vec.end());				// use merge-insertion sort algorithm
+			PmergeMe::sort(vec, vec.begin(), std::prev(vec.end()));
 			stopwatch.stop();
 
 			std::cout << "After: ";
-			printContainer<std::vector<int>>(vec);
+			printContainer(vec);
 			std::cout << std::endl;
 
 			std::cout << "Elapsed time for std::vector<int>:\t" << stopwatch.getElapsed() << " microseconds" << std::endl;
@@ -84,11 +84,15 @@ main(int ac, char **av)
 		{
 			std::list<int>		lst(ac - 1);
 
-			fillContainer<std::list<int>>(lst, ac, av);
+			fillContainer(lst, ac, av);
 
 			stopwatch.start();
-			lst.sort();										// use merge-insertion sort algorithm
+			PmergeMe::sort(lst, lst.begin(), std::prev(lst.end()));
 			stopwatch.stop();
+
+			std::cout << "After: ";
+			printContainer(lst);
+			std::cout << std::endl;
 
 			std::cout << "Elapsed time for std::list<int>:\t" << stopwatch.getElapsed() << " microseconds" << std::endl;
 		}

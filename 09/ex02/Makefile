@@ -52,7 +52,7 @@ $(OBJ_DIR)/%.o: src/%.cpp $(HDR)
 	@ $(CC) $(CFLAGS) -c $< -o $@ -I $(HDR_DIR)
 
 open: $(NAME)
-	@ ./$(NAME) 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4 3 5 9 7 4
+	@ ./$(NAME) 3 5 9 7 4
 
 clean:
 	@ echo "$(RED)$(BOLD)Cleaning $(NICKNAME)...$(RESET)"
