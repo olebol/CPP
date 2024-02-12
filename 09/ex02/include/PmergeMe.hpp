@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:27:24 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/12 19:45:47 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/12 19:49:24 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ namespace PmergeMe
 	}
 
 	template <class Container, typename Iterator>
-	void mergeSort(Iterator begin, Iterator mid, Iterator end)
+	void
+	mergeSort(Iterator begin, Iterator mid, Iterator end)
 	{
 		Container		left(begin, ++mid);
 		Container		right(mid, ++end);
