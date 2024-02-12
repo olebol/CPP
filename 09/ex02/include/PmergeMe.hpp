@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:27:24 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/12 19:54:41 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/12 20:03:40 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ namespace PmergeMe
 		Iterator		leftIt = left.begin();
 		Iterator		rightIt = right.begin();
 
+		// Merge the left and right halves into the original container
 		while (leftIt != left.end() && rightIt != right.end())
 		{
 			if (*leftIt < *rightIt)
@@ -67,6 +68,7 @@ namespace PmergeMe
 			begin++;
 		}
 
+		// Copy the remaining elements of left and right
 		std::copy(leftIt, left.end(), begin);
 		std::copy(rightIt, right.end(), begin);
 	}
@@ -75,7 +77,8 @@ namespace PmergeMe
 	void
 	sort(Container &container, Iterator begin, Iterator end)
 	{
-		if (std::distance(container.begin(), end) <= std::distance(container.begin(), begin))
+		// If the container is empty, break the recursion
+		if (std::distance(begin, end) <= 0)
 			return ;
 
 		// Get the middle of the container
