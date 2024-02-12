@@ -24,7 +24,6 @@ HDR_FILES		:=								\
 # Files
 SRC_FILES		:=								\
 					main.cpp					\
-					PmergeMe.cpp				\
 					StopWatch.cpp				\
 
 SRC				:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))

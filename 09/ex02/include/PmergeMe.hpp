@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:27:24 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/12 18:41:00 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/12 19:45:47 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ namespace PmergeMe
 	};
 
 	// Delete this
-	template <class Container>
+	template <class Container, typename Iterator>
 	void
 	printContainer(Container &container)
 	{
-		typename Container::iterator	it = container.begin();
+		Iterator	it = container.begin();
 
 		while (it != container.end())
 		{
@@ -42,14 +42,14 @@ namespace PmergeMe
 		std::cout << std::endl;
 	}
 
-	template <class Container, typename iter>
-	void mergeSort(iter begin, iter mid, iter end)
+	template <class Container, typename Iterator>
+	void mergeSort(Iterator begin, Iterator mid, Iterator end)
 	{
 		Container		left(begin, ++mid);
 		Container		right(mid, ++end);
 
-		iter leftIt = left.begin();
-		iter rightIt = right.begin();
+		Iterator		leftIt = left.begin();
+		Iterator		rightIt = right.begin();
 
 		while (leftIt != left.end() && rightIt != right.end())
 		{
@@ -81,22 +81,22 @@ namespace PmergeMe
 		}
 	}
 
-	template <class Container, typename iter>
+	template <class Container, typename Iterator>
 	void
-	sort(Container &container, iter begin, iter end)
+	sort(Container &container, Iterator begin, Iterator end)
 	{
 		if (std::distance(container.begin(), end) <= std::distance(container.begin(), begin))
 			return ;
 
-		// Set the middle of the container
-		iter		mid = begin;
+		// Get the middle of the container
+		Iterator		mid = begin;
 
 		std::advance(mid, std::distance(begin, end) / 2);
 
 		// Recursively sort the left and right halves
 		PmergeMe::sort(container, begin, mid);
 		PmergeMe::sort(container, std::next(mid), end);
-		PmergeMe::mergeSort<Container, iter>(begin, mid, end);
+		PmergeMe::mergeSort<Container, Iterator>(begin, mid, end);
 	}
 }
 
