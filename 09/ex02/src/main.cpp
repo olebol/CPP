@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/12 18:35:21 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:13:17 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ main(int ac, char **av)
 			printContainer(vec);
 
 			stopwatch.start();
-			PmergeMe::sort(vec, vec.begin(), std::prev(vec.end()));
+			PmergeMe::sort(vec);
 			stopwatch.stop();
 
 			std::cout << "After: ";
@@ -87,7 +87,7 @@ main(int ac, char **av)
 			fillContainer(lst, ac, av);
 
 			stopwatch.start();
-			PmergeMe::sort(lst, lst.begin(), std::prev(lst.end()));
+			PmergeMe::sort(lst);
 			stopwatch.stop();
 
 			std::cout << "After: ";

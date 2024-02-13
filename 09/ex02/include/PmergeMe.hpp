@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:27:24 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/12 20:04:48 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:13:36 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,23 @@
 
 namespace PmergeMe
 {
-	class NegativeValueException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw()
-			{
-				return ("Negative value");
-			}
-	};
-
-	// Delete this
 	template <class Container, typename Iterator>
 	void
-	printContainer(Container &container)
+	insertionSort(Iterator begin, Iterator end)
 	{
-		Iterator	it = container.begin();
-
-		while (it != container.end())
+		for (Iterator it = begin; it != end; it++)
 		{
-			std::cout << *it << " ";
-			it++;
+			Iterator		current = it;
+			Iterator		previous = std::prev(current);
+			
+			while (current != begin && *current < *previous)
+			{
+				std::iter_swap(current, previous);
+
+				current--;
+				previous--;
+			}
 		}
-		std::cout << std::endl;
 	}
 
 	template <class Container, typename Iterator>
@@ -77,17 +72,28 @@ namespace PmergeMe
 	void
 	sort(Container &container, Iterator begin, Iterator end)
 	{
-		// If the current sub-container is empty, break the recursion
-		if (std::distance(begin, end) <= 0)
-			return ;
+		if (std::distance(begin, end) <= 10)
+		{
+			// Use insertion sort for small containers
+			PmergeMe::insertionSort<Container, Iterator>(begin, std::next(end));
+		}
+		else
+		{
+			// Use merge sort for large containers
+			Iterator		mid = std::next(begin, std::distance(begin, end) / 2);
 
-		// Get the middle of the container
-		Iterator		mid = std::next(begin, std::distance(begin, end) / 2);
+			// Recursively sort the left and right halves
+			PmergeMe::sort(container, begin, mid);
+			PmergeMe::sort(container, std::next(mid), end);
+			PmergeMe::mergeSort<Container, Iterator>(begin, mid, end);
+		}
+	}
 
-		// Recursively sort the left and right halves
-		PmergeMe::sort(container, begin, mid);
-		PmergeMe::sort(container, std::next(mid), end);
-		PmergeMe::mergeSort<Container, Iterator>(begin, mid, end);
+	template <class Container>
+	void
+	sort(Container &container)
+	{
+		PmergeMe::sort<Container, typename Container::iterator>(container, container.begin(), std::prev(container.end()));
 	}
 }
 
