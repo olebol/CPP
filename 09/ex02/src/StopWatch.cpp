@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:26:15 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/12 17:48:44 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:40:04 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,17 @@
 
 StopWatch::StopWatch(void)
 {
-	std::cout << GREEN << "StopWatch: Default constructor called" << RESET << std::endl;
-
 	this->start();
 }
 
 StopWatch::StopWatch(const StopWatch &rhs)
 {
-	std::cout << GREEN << "StopWatch: Copy constructor called" << RESET << std::endl;
-
 	*this = rhs;
 }
 
 StopWatch &
 StopWatch::operator=(const StopWatch &rhs)
 {
-	std::cout << GREEN << "StopWatch: Assignment operator called" << RESET << std::endl;
-
 	if (this != &rhs)
 	{
 		// Perform deep copy
@@ -52,7 +46,6 @@ StopWatch::operator=(const StopWatch &rhs)
 
 StopWatch::~StopWatch(void)
 {
-	std::cout << RED << "StopWatch: Destructor called" << RESET << std::endl;
 }
 
 // ************************************************************************** //
