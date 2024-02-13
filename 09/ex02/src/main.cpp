@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/13 19:41:41 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/13 20:13:18 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ main(int ac, char **av)
 {
 	if (ac < 2)
 	{
-		std::cerr << RED << "Usage: ./ex02 <int> ..." << RESET << std::endl;
+		std::cerr << RED << "Usage:\n";
+		std::cerr << "\t./ex02 <int> <int> <int> ...\n";
+		std::cerr << "\tmake <small> / <medium> / <big> / <huge>" << RESET << std::endl;
 		return (1);
 	}
 
@@ -70,27 +72,28 @@ main(int ac, char **av)
 	{
 		StopWatch			stopwatch;
 
-		// Sort vec (should be done with merge-insertion sort algorithm)
+		// Sort a vector
 		{
 			std::vector<int>	vec;
 
 			fillContainer(vec, ac, av);
 
-			std::cout << "Before: ";
+			std::cout << RED << "Before: ";
 			printContainer(vec);
+			std::cout << RESET << std::endl;
 
 			stopwatch.start();
 			PmergeMe::sort(vec);
 			stopwatch.stop();
 
-			std::cout << "After: ";
+			std::cout << GREEN << "After: ";
 			printContainer(vec);
-			std::cout << std::endl;
+			std::cout << RESET << std::endl;
 
-			std::cout << "Elapsed time for std::vector<int>:\t" << stopwatch.getElapsed() << " microseconds" << std::endl;
+			std::cout << "Elapsed time for sorting a std::vector<int>\t containing " << vec.size() << " elements:\t" << GREEN << stopwatch.getElapsed() << " microseconds" << RESET << std::endl;
 		}
 
-		// Sort lst (should be done with merge-insertion sort algorithm)
+		// Sort a list
 		{
 			std::list<int>		lst;
 
@@ -100,7 +103,7 @@ main(int ac, char **av)
 			PmergeMe::sort(lst);
 			stopwatch.stop();
 
-			std::cout << "Elapsed time for std::list<int>:\t" << stopwatch.getElapsed() << " microseconds" << std::endl;
+			std::cout << "Elapsed time for sorting a std::list<int>\t containing " << lst.size() << " elements:\t" << GREEN << stopwatch.getElapsed() << " microseconds" << RESET << std::endl;
 		}
 	}
 	catch (std::exception &e)

@@ -50,8 +50,20 @@ $(OBJ_DIR)/%.o: src/%.cpp $(HDR)
 	@ mkdir -p obj
 	@ $(CC) $(CFLAGS) -c $< -o $@ -I $(HDR_DIR)
 
-open: $(NAME)
-	@ ./$(NAME) 3 5 9 7 4
+small: $(NAME)
+	@ ./$(NAME) `shuf -i 0-10 -n 5 | tr "\n" " "`
+
+medium: $(NAME)
+	@ ./$(NAME) `shuf -i 0-100 -n 100 | tr "\n" " "`
+
+big: $(NAME)
+	@ ./$(NAME) `shuf -i 0-3000 -n 3000 | tr "\n" " "`
+
+huge: $(NAME)
+	@ ./$(NAME) `shuf -i 0-10000 -n 10000 | tr "\n" " "`
+
+wtf: $(NAME)
+	@ ./$(NAME) `shuf -i 0-100000 -n 100000 | tr "\n" " "`
 
 clean:
 	@ echo "$(RED)$(BOLD)Cleaning $(NICKNAME)...$(RESET)"
@@ -64,4 +76,4 @@ fclean:
 
 re: fclean ${NAME}
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re small medium big huge wtf

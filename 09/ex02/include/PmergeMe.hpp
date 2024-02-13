@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:27:24 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/13 19:13:36 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/13 20:13:06 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,35 @@
 
 namespace PmergeMe
 {
+	class NotSortedException : public std::exception
+	{
+		virtual const char *what() const noexcept
+		{
+			return ("Failed to sort the container");
+		}
+	};
+
+	template <class Container>
+	bool
+	isSorted(Container &container)
+	{
+		// Set the iterator to the second element
+		typename Container::iterator	it = std::next(container.begin());
+
+		while (it != container.end())
+		{
+			// Check if the current element is less than the one before it
+			typename Container::iterator	prev = std::prev(it);
+
+			if (*it < *prev)
+				return (false);
+
+			it++;
+		}
+
+		return (true);
+	}
+
 	template <class Container, typename Iterator>
 	void
 	insertionSort(Iterator begin, Iterator end)
@@ -94,6 +123,9 @@ namespace PmergeMe
 	sort(Container &container)
 	{
 		PmergeMe::sort<Container, typename Container::iterator>(container, container.begin(), std::prev(container.end()));
+
+		if (PmergeMe::isSorted(container) == false)
+			throw (PmergeMe::NotSortedException());
 	}
 }
 
