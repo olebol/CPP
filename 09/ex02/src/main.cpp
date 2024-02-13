@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:42 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/13 19:13:17 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:41:41 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,20 @@ template <class Container>
 void
 fillContainer(Container &container, int ac, char **av)
 {
-	typename Container::iterator	it = container.begin();
+	for (int i = 1; i < ac; i++)
+	{
+		std::string		arg(av[i]);
 
-	for (int i = 1; i < ac; it++, i++)
-		*it = std::stoi(av[i]);
+		for (char c : arg)
+		{
+			if (std::isdigit(c) == false)
+				throw (std::invalid_argument("All arguments must be positive integers"));
+		}
+
+		int		num = std::stoi(arg);
+
+		container.push_back(num);
+	}
 }
 
 int
@@ -62,7 +72,7 @@ main(int ac, char **av)
 
 		// Sort vec (should be done with merge-insertion sort algorithm)
 		{
-			std::vector<int>	vec(ac - 1);
+			std::vector<int>	vec;
 
 			fillContainer(vec, ac, av);
 
@@ -82,17 +92,13 @@ main(int ac, char **av)
 
 		// Sort lst (should be done with merge-insertion sort algorithm)
 		{
-			std::list<int>		lst(ac - 1);
+			std::list<int>		lst;
 
 			fillContainer(lst, ac, av);
 
 			stopwatch.start();
 			PmergeMe::sort(lst);
 			stopwatch.stop();
-
-			std::cout << "After: ";
-			printContainer(lst);
-			std::cout << std::endl;
 
 			std::cout << "Elapsed time for std::list<int>:\t" << stopwatch.getElapsed() << " microseconds" << std::endl;
 		}
