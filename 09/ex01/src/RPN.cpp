@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:26:23 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/07 16:41:00 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/14 15:19:56 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ performOperation(std::stack<int> &stack, char operatorChar)
 			break;
 	}
 }
-                           
+
 static void
 handleCurrentPart(std::stack<int> &stack, std::string &input)
 {
