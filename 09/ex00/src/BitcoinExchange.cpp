@@ -6,7 +6,7 @@
 /*   By: opelser <opelser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:51 by opelser           #+#    #+#             */
-/*   Updated: 2024/02/05 21:06:56 by opelser          ###   ########.fr       */
+/*   Updated: 2024/02/14 16:10:47 by opelser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,12 +139,13 @@ BitcoinExchange::getRate(std::string &date) const
 	// Find the rate for the given date
 	std::map<std::string, double>::const_iterator		it;
 	
-	it = this->_exchangeRates.find(date);
+	it = this->_exchangeRates.lower_bound(date);
 
-	if (it != this->_exchangeRates.end())
+	// Check if the date is found, else return the closest earlier date
+	if (it->first == date || it == this->_exchangeRates.begin())
 		return (it->second);
 	else
-		return (this->_exchangeRates.lower_bound(date)->second);
+		return ((std::prev(it))->second);
 }
 
 double
